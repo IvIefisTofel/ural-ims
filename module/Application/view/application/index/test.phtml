@@ -1,0 +1,10 @@
+<?
+
+?>
+
+I am in <b>Application</b> module in <b>Index</b> controller <b>Index</b> action
+<br>
+<?
+if ($user = $this->identity())
+    echo $user->getGrAvatar(300, 'mm', 'g', true);
+?>

@@ -1,0 +1,338 @@
+/* General CSS */
+/* Body and Html */
+body, html {
+  width: 100%;
+  height: 100%;
+}
+/* UI - X */
+.ui{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	padding: 0px;
+	margin: 0px; 
+}
+/* Wrapper */
+#wrapper {
+  width: 100%;
+  height: 100%; 
+}
+/* Outer */
+.ui-outer{
+    position: fixed;
+    left: 0px;
+    top: 50px;
+    z-index: 101;
+
+    width: 45px;
+}
+.ui-outer  a{
+    width:100%;
+    display:block;
+    border:1px solid #e7e7e7;
+    border-top:0px;
+    -webkit-transition: background 1s;
+    -moz-transition: background 1s;
+    -o-transition: background 1s;
+    transition: background 1s;
+    position:relative;
+    overflow:hidden;
+    background:#fff;
+}
+.ui-outer  a:hover{
+    background:#fafafa;
+}
+/* Icon */
+.ui-outer a > i{
+    text-align:center;
+    width:45px;
+    height:40px;
+    font-size:15px;
+    line-height:40px;
+    text-align:center;
+    color:#f75353;
+}
+.ui-outer a:hover > i{
+    background-color: #eeeeee;
+}
+
+/* Navigation */
+.ui-outer a.ui-head{
+    box-shadow: inset 0px 0px 2px 0px rgba(0,0,0,0.2);
+    border:0px;
+}
+a.ui-head > i{
+    color:#fff;
+}
+a.ui-head:hover > i{
+    color:#fff;
+}
+/* Navigation Links */
+.ui-outer  a > span{
+    position:absolute;
+    top:8px;
+    left:60px;
+    opacity:0;
+}
+.ui-outer a.ui-head{
+    background:#fafafa;
+}
+.ui-outer a.ui-head > span{
+    color:#555;
+    font-size:14px;
+    font-weight:600;
+    line-height:26px;
+    text-transform:uppercase;
+}
+/* Navigation */
+a.ui-nav{
+    padding:0px 0px 17px;
+}
+a.ui-nav > i{
+    position:absolute;
+}
+.open a.ui-nav > i{
+    border-right:1px solid #e7e7e7;
+}
+/* Active */
+a.ui-nav.active > i {
+    background-color: #f75353;
+    color: #fff;
+}
+a.ui-nav.active:hover > i {
+    color: #ddd;
+}
+a.ui-nav.active {
+    border-color: #f75353;
+}
+/* Slider label */
+.slider-caption-wrap {
+    position: absolute;
+    font-size: 52px;
+    line-height:62px;
+    font-weight:700;
+    color:#fff;
+
+    z-index: 12;
+}
+.slider-caption-wrap.caption-left {
+    left: 20%;
+    text-align: left;
+    top: 30%;
+}
+.slider-caption-wrap.caption-right {
+    right: 20%;
+    text-align: right;
+    top: 30%;
+}
+.slider-caption-wrap > h3 {
+    position: relative;
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+
+    margin: 0 0 auto;
+    border-radius: 2px;
+    font-weight: normal;
+    padding: 3px 7px;
+
+    /*font-size: 30px;*/
+    /*line-height: 45px;*/
+
+    color: #ffffff;
+    background: #ed5441;
+}
+.slider-caption-wrap > h3 > a {
+    margin-top: -5px;
+    margin-left: 5px;
+
+    border-radius: 2px;
+    position: relative;
+    color: #ffffff;
+    background: #f69110;
+    border: 1px solid #f8a841;
+
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+}
+.slider-caption-wrap > h3 > a:hover,
+.slider-caption-wrap > h3 > a:focus,
+.slider-caption-wrap > h3 > a.active,
+.slider-caption-wrap > h3 > a:active {
+    background: #f8a841;
+    color: #ffffff;
+}
+
+.ui-details {
+    position: relative;
+    max-width: 400px;
+    margin: 20px auto;
+    background: #f69110;
+    padding: 14px 24px;
+    border-radius: 2px;
+    box-shadow: 3px 3px 2px 0px rgba(0,0,0,0.18);
+    z-index: initial;
+}
+.ui-details:before {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 15px;
+    border-color: transparent;
+    z-index: -1;
+    border-left: 0;
+    box-shadow: -5px -5px 5px 0px rgba(0, 0, 0, 0.18);
+}
+.slider-caption-wrap.caption-left .ui-details:before {
+    top: -20px;
+    left: 40px;
+    transform: rotate(135deg);
+}
+.slider-caption-wrap.caption-right .ui-details:before {
+    top: -20px;
+    right: 56px;
+    transform: rotate(180deg);
+}
+.ui-details:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-left: 0;
+    border-top-color: #f69110;
+    border-width: 20px;
+    /*#f69110;*/
+}
+.ui-details.sub:after, .ui-details.sub:before {
+    visibility: hidden; !important;
+}
+.slider-caption-wrap.caption-left .ui-details:after {
+    top: -30px;
+    left: 56px;
+    transform: rotate(270deg);
+}
+.slider-caption-wrap.caption-right .ui-details:after {
+    top: -40px;
+    right: 56px;
+    transform: rotate(180deg);
+}
+.ui-details p {
+    text-align: left;
+    color: #fff;
+    font-style: italic;
+
+    font-size: 15px;
+    line-height: 30px;
+}
+.ui-details p a {
+    color: #b44532;
+}
+.ui-details p a:hover {
+    color: #ed5441;
+}
+
+/* Heading */
+.ui #wrapper .snappish-main .snappish-content {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 10%;
+    font-size: 52px;
+    line-height:62px;
+    font-weight:700;
+    color:#fff;
+    text-transform:uppercase;
+}
+@media(max-width: 500px){
+    .ui #wrapper .snappish-main .snappish-content {
+        font-size:35px;
+        line-height:45px;
+        top:35%;
+    }
+}
+.tooltip{
+    font-family:"Open Sans", sans-serif;
+}
+.tooltip.right .tooltip-inner {
+    background-color: #ed5441;
+}
+.tooltip.right .tooltip-arrow {
+    border-right-color: #ed5441;
+}
+.ui-contacts {
+    position: fixed;
+    bottom:-465px;
+    width:100%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+    z-index: 200;
+}
+.ui-contacts .ui-footer{
+    text-align:center;
+    color:#fff;
+    max-width:500px;
+    height:500px;
+    border-radius:1600px;
+    margin:0px auto;
+    padding:8px 15px;
+}
+.ui-contacts .ui-btn{
+    font-size:15px;
+    line-height:15px;
+}
+.ui-contacts h2{
+    font-size:15px;
+    line-height:35px;
+    text-transform:uppercase;
+    color:#fff;
+}
+.ui-contacts .details{
+    font-size:15px;
+    line-height:30px;
+}
+.ui-contacts .details i{
+    margin-right:5px;
+}
+.ui-contacts .social{
+    margin: 10px auto;
+}
+.ui-contacts .social a i{
+    display:inline-block;
+    width:25px;
+    height:25px;
+    text-align:center;
+    margin:5px;
+    color:#fff;
+    font-size:17px;
+}
+#y-maps {
+    background-color: white;
+    position: absolute;
+    bottom: 200px;
+    left: 0;
+    right: 0;
+    height: 600px;
+}

@@ -1,0 +1,44 @@
+<html lang="ru" g_init="6747">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="icon" href="<?=$this->basePath(); ?>/img/favicon.ico">
+
+    <title>Admin Login</title>
+
+    <link href="<?=$this->basePath(); ?>/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="<?=$this->basePath(); ?>/auth/css/admin-login.css" media="screen" rel="stylesheet" type="text/css">
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/auth/admin-login.css"></script>
+</head>
+
+<body>
+
+<div class="message-block">
+    <? if ($form->getMessages()):
+        foreach ($form->getMessages() as $message): ?>
+            <div class="alert alert-danger" role="alert">
+                <?=current($message); ?>
+            </div>
+        <? endforeach; ?>
+    <? endif; ?>
+</div>
+
+<div class="container">
+    <form method="post" name="login" action="<?=$this->url('admin-login')?>" class="form-signin" role="form" id="login">
+        <h2 class="form-signin-heading">Авторизация</h2>
+        <input type="text" class="form-control" placeholder="Email" name="email">
+        <input type="password" class="form-control" placeholder="Пароль" name="password">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="1" name="rememberMe"> Запомнить меня
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
+    </form>
+</div>
+
+
+<script src="<?=$this->basePath(); ?>/js/bootstrap.min.js"></script>
+
+</body></html>
