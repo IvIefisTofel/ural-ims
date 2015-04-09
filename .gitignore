@@ -1,7 +1,7 @@
 # Composer files
 composer.phar
 composer.lock
-vendor/
+vendor/*
 
 # Local configs
 config/autoload/*.local.php
