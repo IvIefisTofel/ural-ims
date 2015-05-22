@@ -107,7 +107,7 @@
             plugin.els['wrapper']       = $(document.createElement('div')).attr('id','glisse-wrapper');
             plugin.els['overlay']       = $(document.createElement('div')).attr('id','glisse-overlay').css(cssProp, cssVal);
             plugin.els['spinner']       = $(document.createElement('div')).attr('id','glisse-spinner').append('<i class="fa fa-cog fa-spin"></i>');
-            plugin.els['close']         = $(document.createElement('i')).attr('id','glisse-close').attr('class', 'fa fa-times').css(cssProp, cssVal);
+            plugin.els['close']         = $(document.createElement('i')).attr('id','glisse-close').attr('class', 'ims-cancel').css(cssProp, cssVal);
             plugin.els['content']       = $(document.createElement('div')).attr('id','glisse-overlay-content').css(cssProp, cssVal)
                                             .css(getPrefix('transform')+'transform', 'scale(0)');
             plugin.els['controls']      = $(document.createElement('div')).attr('id','glisse-controls').css(cssProp, cssVal);
@@ -136,9 +136,9 @@
             readyElement.observe('glisse-controls', function(){ plugin.els['controls'].css('opacity',1); });
 
             // Bind events
-            plugin.els['controls'].delegate('a','click', function(e){
+            plugin.els['controls'].delegate('div, a','click', function(e){
                 e.preventDefault();
-                var changeTo = ($(this).parent().hasClass('glisse-next')) ? 'next' : 'prev';
+                var changeTo = ($(this).parent().hasClass('glisse-next') || $(this).hasClass('glisse-next')) ? 'next' : 'prev';
                 changePicture(changeTo);
             });
 

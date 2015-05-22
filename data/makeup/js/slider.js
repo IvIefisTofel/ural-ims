@@ -76,7 +76,7 @@ var PageTransitions = (function() {
             var currentPhotoIndex = photoIndex = $('#' + current).attr('photoIndex');
 
             clearInterval(autoSlideId);
-            $('nav.home-menu button').attr({disabled: 'disabled'});
+            $('.nav button.nav-el').attr({disabled: 'disabled'});
             nextPage( parseInt(anim) );
             autoSlide(defaultInterval);
             $(this).find('img').fadeOut('slow', function(){
@@ -434,7 +434,7 @@ var PageTransitions = (function() {
 		isAnimating = false;
         current = next;
         $navigation.removeAttr('disabled');
-        $('nav.home-menu button').removeAttr('disabled');
+        $('.nav button.nav-el').removeAttr('disabled');
 	}
 
 	function resetPage( $outpage, $inpage ) {

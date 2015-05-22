@@ -3,36 +3,45 @@ var AnimEnd = 'animationend webkitAnimationEnd mozAnimationEnd MSAnimationEnd oA
 var nav = $('.nav');
 var navButton = $('.nav-el');
 var overlay = $('.overlay');
+var $currentSlide;
+var jScroll = {
+    elements: [
+        $('.gallery-container'),
+        $('.main-container')
+    ],
+    options: {
+        size: '10px',
+        height: 'auto',
+        alwaysVisible: true,
+        borderRadius: 0
+    }
+};
 
 var autoSlideId = 0,
     defaultInterval = 15000;
 
-var loadedGallerys = {
-    'ov-topleft':    false, // first
-    'ov-topright':   false, // second
-    'ov-btmleft':    false  // third
-};
 var galleryTheme = {
-    'first': {
-        'id': 'ov-topleft',
-        'theme': 'technics',
-        'type': 'wood',
-        'arrImages': []
+    wood: {
+        theme: 'technics',
+        loaded: false,
+        arrImages: [],
+        length: 0
     },
-    'secont': {
-        'id': 'ov-topright',
-        'theme': 'city',
-        'type': 'machining',
-        'arrImages': []
+    machining: {
+        theme: 'city',
+        loaded: false,
+        arrImages: [],
+        length: 0
     },
-    'third': {
-        'id': 'ov-btmleft',
-        'theme': 'sports',
-        'type': 'bucket',
-        'arrImages': []
-    }
+    bucket: {
+        theme: 'sports',
+        loaded: false,
+        arrImages: [],
+        length: 0
+    },
+    countImages: 10,
+    loading: false
 };
-var loading = false;
 
 /* Полезная штука, но тут пока не используется */
 $.preloadImages = function () {
@@ -71,83 +80,65 @@ function getRandom(min, max) {
 }
 
 /**
- *
+ * Loading and parse gallery (now from placehold generator service)
  * @param index
  * @param [randomCount = false]
  * @returns {boolean}
  */
 function loadGallery(index){
-    if (!(typeof loadedGallerys[index] === 'undefined') && !loadedGallerys[index] && !loading) {
-        loading = true;
+    if (!(typeof galleryTheme[index] === 'undefined') && !galleryTheme[index].loaded && !galleryTheme.loading) {
+        galleryTheme.loading = true;
 
         $('#' + index + ' .preloader').fadeIn('slow');
-        var count = 10,
-            arrUrls = {
-                'm': [],
-                'o': []
-            };
-        var selector;
-        switch (index) {
-            case galleryTheme['first']['id']:
-                selector = 'first';
-                break;
-            case galleryTheme['secont']['id']:
-                selector = 'secont';
-                break;
-            case galleryTheme['third']['id']:
-                selector = 'third';
-                break;
-            default:
-                break;
-        }
 
-        for (var i = 0; i < count; i++) {
-            galleryTheme[selector]['arrImages'][i] = [];
-            galleryTheme[selector]['arrImages'][i]['index'] = i + 1;
-            galleryTheme[selector]['arrImages'][i]['src'] = [];
-            galleryTheme[selector]['arrImages'][i]['src']['min'] =
-                'http://lorempixel.com/300/300/' + galleryTheme[selector]['theme'] + '/' +
-                galleryTheme[selector]['arrImages'][i]['index'];
-            galleryTheme[selector]['arrImages'][i]['src']['original'] =
-                'http://lorempixel.com/1280/720/' + galleryTheme[selector]['theme'] + '/' +
-                galleryTheme[selector]['arrImages'][i]['index'];
-            arrUrls['m'][galleryTheme[selector]['arrImages'][i]['index']] = galleryTheme[selector]['arrImages'][i]['src']['min'];
-            arrUrls['o'][galleryTheme[selector]['arrImages'][i]['index']] = galleryTheme[selector]['arrImages'][i]['src']['original'];
+        for (var i = 0; i < galleryTheme.countImages; i++) {
+            galleryTheme[index]['arrImages'][i] = [];
+            galleryTheme[index]['arrImages'][i]['index'] = i + 1;
+            galleryTheme[index]['arrImages'][i]['src'] = [];
+            galleryTheme[index]['arrImages'][i]['src']['min'] =
+                'http://lorempixel.com/300/300/' + galleryTheme[index]['theme'] + '/' +
+                galleryTheme[index]['arrImages'][i]['index'];
+            galleryTheme[index]['arrImages'][i]['src']['original'] =
+                'http://lorempixel.com/1280/720/' + galleryTheme[index]['theme'] + '/' +
+                galleryTheme[index]['arrImages'][i]['index'];
         }
-        galleryTheme['first']['arrImages'].sort(function(){
+        galleryTheme[index]['arrImages'].sort(function(){
             return Math.random() - 0.6;
         });
 
-        var blockHTML = '<div class="gallary-item" style="display: none"><img src="{min}" class="gallaryImage" rel="{rel}" data-glisse-big="{original}"></div>';
-        var currHTML, countLoaded = 0;
-        for (var i = 0; i < count; i++) {
-            currHTML = blockHTML.replace('{min}', galleryTheme[selector]['arrImages'][i]['src']['min']);
-            currHTML = currHTML.replace('{original}', galleryTheme[selector]['arrImages'][i]['src']['original']);
-            currHTML = currHTML.replace('{rel}', galleryTheme[selector]['type']);
+        var blockHTML = '<div class="gallery-item" style="display: none"><img src="{min}" class="galleryImage" rel="{rel}" data-glisse-big="{original}"></div>';
+        var currHTML;
+        for (var i = 0; i < galleryTheme.countImages; i++) {
+            currHTML = blockHTML.replace('{min}', galleryTheme[index]['arrImages'][i]['src']['min']);
+            currHTML = currHTML.replace('{original}', galleryTheme[index]['arrImages'][i]['src']['original']);
+            currHTML = currHTML.replace('{rel}', index);
 
-            $('#' + index + ' .gallary').append(currHTML);
-            $('#' + index + ' .gallary').children().last().find('img').load(function(){
-                countLoaded++
+            $('#' + index + ' .gallery').append(currHTML);
+            $('#' + index + ' .gallery').children().last().find('img').load(function(){
+                galleryTheme[index].length++
                 $(this).parent().fadeIn('slow');
-                if (countLoaded == count) {
+                if (galleryTheme[index].length == galleryTheme.countImages) {
                     /* Resize scrollBar */
-                    $('.jScrollPane').jScrollPane();
+                    jScrollInit();
                     ///* Reinit gallery */
-                    $('.gallaryImage').glisse({speed: 500, changeSpeed: 600});
+                    $('.galleryImage').glisse({speed: 500, changeSpeed: 600});
                     /* Hide preloader */
                     $('#' + index + ' .preloader').fadeOut('slow');
                     /* Setup gallery as loaded */
-                    loadedGallerys[index] = true;
-                    loading = false;
+                    galleryTheme[index].loaded = true;
+                    galleryTheme.loading = false;
                 }
             });
         }
-
-        //arrUrls = $.merge(arrUrls['m'], arrUrls['o']);
-        //$.preloadImages(arrUrls, function(){});
     } else
         return false;
 };
+
+function jScrollInit() {
+    $(jScroll.elements).each(function(){
+        $(this).slimScroll(jScroll.options);
+    });
+}
 
 /* Auto slide */
 function autoSlide(interval){
@@ -156,13 +147,15 @@ function autoSlide(interval){
     }, interval);
 }
 
-/* Contacts animate */
-function bindContacts (){
-    $(".main-contacts .main-contacts-footer").hover(function(){
-        $(".main-contacts").css("bottom","-320px");
-    }, function(){
-        $(".main-contacts").css("bottom","-465px");
-    });
+function sliderOrientation() {
+    var $el = $('.slider-content img');
+    if ($("html").width() >= $("html").height()) {
+        $el.removeAttr('style');
+        $el.css('width', '100%');
+    } else {
+        $el.removeAttr('style');
+        $el.css('height', '100%');
+    }
 }
 
 $(document).ready(function () {
@@ -171,6 +164,7 @@ $(document).ready(function () {
     var tempBlock = '<div class="slider-content-page imageWrapper">{image}</div>';
     var photoIndex, imageHTML, tmpHTML, $firstElement, countLoaded = 0;
 
+    /* Loading random images for slider */
     for (var i = 0; i < countBloks; i++) {
         photoIndex = getRandom(1, 10);
         //photoIndex = i + 1;
@@ -206,18 +200,21 @@ $(document).ready(function () {
     }
 
     /* Hide some elements */
-    $('.close').hide();
-    $('.wrap-gallary').hide();
-    $('.overlay button').hide();
-    $('.preloader').hide();
+    var elementsToHide = [
+        $('.close'),
+        $('.wrap-main'),
+        $('.wrap-gallery'),
+        $('.overlay button'),
+        $('.preloader')
+    ];
+    $(elementsToHide).each(function(){
+        $(this).hide();
+    });
 
-    bindContacts();
-
-    /* Glisse gallery */
-    $('.gallaryImage').glisse({speed: 500, changeSpeed: 600});
+    /* Glisse gallery init */
+    $('.galleryImage').glisse({speed: 500, changeSpeed: 600});
 
     /* On menu button click event */
-    var $currentSlide;
     $(navButton).click(function(event){
         if ($(this).hasClass("inactive")) {
             event.preventDefault();
@@ -232,16 +229,21 @@ $(document).ready(function () {
 
                 /* Stop animation */
                 $currentSlide = $('.slider-content-page.current').removeClass('current');
+                /* Disable menu */
+                $('.nav button.nav-el').attr({disabled: 'disabled'});
 
-                /* Show gallery */
-                $('.wrap-gallary').slideDown('slow', function(){
-                    loadGallery(dataId);
-                });
+                /* Show overlay content */
+                if ($('.overlay.active').find('.contact-us').length > 0) {
+                    /* Main contacts slide up */
+                    $('.main-contacts-footer').addClass('active');
 
-                /* Show contacts content */
-                if ($('.overlay.active').find('.contact-us').length > 0)
-                    $('.contact-us').fadeIn('fast');
-            },1500)
+                    $('.contact-us').fadeIn('slow');
+                } else {
+                    $('.wrap-gallery, .wrap-main').slideDown('slow', function(){
+                        loadGallery(dataId);
+                    });
+                }
+            },1500);
 
             /* Remove old previous classes */
             $(navButton).removeClass('inactive_reverse active_reverse');
@@ -263,33 +265,23 @@ $(document).ready(function () {
             /* Prevent scrolling */
             $("body").addClass('noscroll');
 
-            /* jScrollPane init */
-            $('.overlay.active').find('.wrap-gallary').show();
-            $('.overlay.active').find('.jScrollPane').jScrollPane();
-            $('.overlay.active').find('.wrap-gallary').hide();
+            /* slimScroll init */
+            jScrollInit();
         }
-    });
-    /* On contacts click */
-    $('#el-btmright').click(function() {
-        $(".main-contacts .main-contacts-footer").unbind('mouseenter mouseleave');
-        /* Contacts slide-up */
-        setTimeout(function () {
-            $(".main-contacts").css("bottom","-320px")
-        }, 1000);
     });
 
     /* On close button click event */
     $(".close").click(function(){
         $(this).parent().find('button').fadeOut('slow');
-        /* Hide Contacts content */
-        if ($('.overlay.active').find('.contact-us').length > 0)
-            $('.contact-us').fadeOut('fast');
 
-        /* Contacts slide-down */
-        $(".main-contacts").css("bottom","-465px");
-        bindContacts();
-        /* Hide gallery */
-        $('.wrap-gallary').slideUp('slow');
+        /* Hide overlay content */
+        if ($('.overlay.active').find('.contact-us').length > 0) {
+            $('.contact-us').fadeOut('slow');
+            /* Contacts slide-down */
+            $('.main-contacts-footer').removeClass('active');
+        } else {
+            $('.wrap-gallery, .wrap-main').slideUp('slow');
+        }
 
         /* Start animation */
         $currentSlide.addClass('current');
@@ -311,9 +303,10 @@ $(document).ready(function () {
             $(navButton).find('.title.hidden').removeClass('hidden');
             /* Start auto sliding */
             autoSlide(defaultInterval);
+            /* Enable menu */
+            $('.nav button.nav-el').removeAttr('disabled');
         });
     });
-
 
     /* Creative Form init */
     if (!String.prototype.trim) {
@@ -348,20 +341,36 @@ $(document).ready(function () {
     }
     /* Creative Form end init */
 
-    /* jScrollPane resize */
+    sliderOrientation();
+
     $(window).resize(function() {
-        if ($('.jScrollPane').is(':visible')) {
-            $('.jScrollPane').jScrollPane();
+        /* jScrollPane resize */
+        if ($('.gallery-container .gallery').is(':visible')) {
+            jScrollInit();
         }
+        sliderOrientation();
     });
 
     /* on KeyUp */
     $(document).keyup(function(e) {
-        if (e.keyCode == 27 && $('.overlay.active').find('.close').is(':visible'))
+        if (e.keyCode == 27 && !$('#glisse-wrapper').is(':visible') && $('.overlay.active').find('.close').is(':visible')) {
             $('.overlay.active').find('.close').click();
+        }
     });
+
+    $('.home-menu .nav-el').css({'max-width': $(document).width(), 'max-height': $(document).height()});
 
     /* ckEditor */
     CKEDITOR.config.skin = 'office2013';
-    CKEDITOR.replace( 'ckEditor' );
+    //CKEDITOR.config.resize_minWidth = '550px';
+    CKEDITOR.config.resize_dir = 'both';
+    CKEDITOR.replace( 'ckEditor', {
+        width: 550,
+        height: 100,
+        resize_dir: 'both',
+        resize_minWidth: 550,
+        resize_maxWidth: 1600,
+        resize_minHeight: 200,
+        resize_maxHeight: 490
+    } );
 });

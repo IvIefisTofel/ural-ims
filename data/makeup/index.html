@@ -16,14 +16,12 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Font awesome CSS -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <!-- jScrollPane CSS -->
-    <link href="css/jquery.jscrollpane.css" rel="stylesheet">
     <!-- Glisse CSS -->
     <link href="css/glisse.css" rel="stylesheet">
 
     <!-- Main CSS -->
     <link href="css/general.css" rel="stylesheet">
-    <link href="css/icons.css" rel="stylesheet">
+    <!--<link href="css/icons.css" rel="stylesheet">-->
     <link href="css/index.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/animations.css" rel="stylesheet">
@@ -43,15 +41,15 @@
     <!-- Slider Navigation -->
     <nav class="slider-nav">
         <a id="movePrev" class="prev" href="#" data-animation="62">
-                    <span class="icon-wrap">
-                        <i class="fa fa-angle-double-left"></i>
-                    </span>
+            <span class="icon-wrap">
+                <i class="fa fa-angle-double-left"></i>
+            </span>
             <img src="">
         </a>
         <a id="moveNext" class="next" href="#" data-animation="63">
-                    <span class="icon-wrap">
-                        <i class="fa fa-angle-double-right"></i>
-                    </span>
+            <span class="icon-wrap">
+                <i class="fa fa-angle-double-right"></i>
+            </span>
             <img src="">
         </a>
     </nav>
@@ -61,28 +59,28 @@
 </section>
 
 <!-- Menu -->
-<nav class="nav clearfix home-menu">
-    <button class="nav-el" id="el-topleft" data-id="ov-topleft">
+<div class="nav clearfix">
+    <button class="nav-el" id="el-wood" data-id="wood">
         <i class="ims-wood"></i>
 
         <div class="title">Деревообработка</div>
     </button>
-    <button class="nav-el" id="el-topright" data-id="ov-topright">
+    <button class="nav-el" id="el-machining" data-id="machining">
         <i class="ims-machining"></i>
 
         <div class="title">Мхеанообработка</div>
     </button>
-    <button class="nav-el" id="el-btmleft" data-id="ov-btmleft">
+    <button class="nav-el" id="el-bucket" data-id="bucket">
         <i class="ims-bucket"></i>
 
         <div class="title">Литье пластмасс</div>
     </button>
-    <button class="nav-el" id="el-btmright" data-id="ov-btmright">
+    <button class="nav-el" id="el-contacts" data-id="contacts">
         <i class="ims-mail-to"></i>
 
         <div class="title">Обратная связь</div>
     </button>
-</nav>
+</div>
 
 <!-- Contacts -->
 <div class="main-contacts" style="bottom: -465px;">
@@ -113,10 +111,10 @@
 </div>
 
 <!-- Overlays (hidden by default)-->
-<section class="overlay" id="ov-topleft">
+<section class="overlay" id="wood">
     <div class="wrap">
         <div class="wrap-main">
-            <div class="vCenter">
+            <div class="main-container">
                 <h1 class="header">Section 1</h1>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
@@ -125,24 +123,35 @@
                     cillum dolore eu fugiat nulla pariatur. <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing
                     elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
-        <div class="wrap-gallary">
-            <div class="gallary-border"></div>
-            <div class="gallary-container jScrollPane">
-                <div class="gallary"></div>
+        <div class="wrap-gallery">
+            <div class="gallery-container jScroll">
+                <div class="gallery"></div>
             </div>
             <div class="preloader"><i class="fa fa-cog fa-spin"></i></div>
         </div>
     </div>
 
-    <button class="close"><i class="icon-cancel"></i></button>
+    <button class="close"><i class="ims-cancel"></i></button>
     <button class="label" disabled><i class="ims-wood"></i></button>
 </section>
-<section class="overlay" id="ov-topright">
+<section class="overlay" id="machining">
     <div class="wrap">
         <div class="wrap-main">
-            <div class="vCenter">
+            <div class="main-container">
                 <h1 class="header">Section 2</h1>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
@@ -153,22 +162,22 @@
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
-        <div class="wrap-gallary">
-            <div class="gallary-border"></div>
-            <div class="gallary-container jScrollPane">
-                <div class="gallary"></div>
+        <div class="wrap-gallery">
+            <div class="gallery-border"></div>
+            <div class="gallery-container jScroll">
+                <div class="gallery"></div>
             </div>
             <div class="preloader"><i class="fa fa-cog fa-spin"></i></div>
         </div>
     </div>
 
-    <button class="close"><i class="icon-cancel"></i></button>
+    <button class="close"><i class="ims-cancel"></i></button>
     <button class="label" disabled><i class="ims-machining"></i></button>
 </section>
-<section class="overlay" id="ov-btmleft">
+<section class="overlay" id="bucket">
     <div class="wrap">
         <div class="wrap-main">
-            <div class="vCenter">
+            <div class="main-container">
                 <h1 class="header">Section 3</h1>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
@@ -179,19 +188,19 @@
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
-        <div class="wrap-gallary">
-            <div class="gallary-border"></div>
-            <div class="gallary-container jScrollPane">
-                <div class="gallary"></div>
+        <div class="wrap-gallery">
+            <div class="gallery-border"></div>
+            <div class="gallery-container jScroll">
+                <div class="gallery"></div>
             </div>
             <div class="preloader"><i class="fa fa-cog fa-spin"></i></div>
         </div>
     </div>
 
-    <button class="close"><i class="icon-cancel"></i></button>
+    <button class="close"><i class="ims-cancel"></i></button>
     <button class="label" disabled><i class="ims-bucket"></i></button>
 </section>
-<section class="overlay" id="ov-btmright">
+<section class="overlay" id="contacts">
     <div class="wrap contact-us">
         <h1>Обратная связь</h1>
 
@@ -226,7 +235,7 @@
         </form>
     </div>
 
-    <button class="close"><i class="icon-cancel"></i></button>
+    <button class="close"><i class="ims-cancel"></i></button>
     <button class="label" disabled><i class="ims-mail-to"></i></button>
 </section>
 
@@ -240,9 +249,8 @@
 <!-- History js todo: Подключить!!! -->
 <!--<script src="js/jquery.history.js"></script>-->
 
-<!-- jScrollPane -->
-<script src="js/jquery.mousewheel.js"></script>
-<script src="js/jquery.jscrollpane.min.js"></script>
+<!-- slimScroll -->
+<script src="js/jquery.slimscroll.js"></script>
 
 <!-- ckEditor -->
 <script src="ckeditor/ckeditor.js"></script>
