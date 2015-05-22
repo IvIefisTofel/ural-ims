@@ -1,0 +1,134 @@
+html{height:100%}
+
+/* Glisse: Hide elements by default */
+#glisse-overlay, #glisse-close, #glisse-controls,#glisse-spinner{opacity:0;z-index: 10000}
+
+/* Glisse: Overlay */
+#glisse-overlay {
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:rgba(0,0,0,.75);
+    z-index: 10000
+}
+    #glisse-overlay.loading #glisse-spinner {opacity:1;z-index: 10000} /* Display spinner */
+    
+/* Glisse: Overlay content */    
+/* Glisse: Overlay content */
+#glisse-overlay-content {
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    bottom: 10%;
+    left: 10%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    opacity: 0;
+    -moz-background-size:       contain;
+    -webkit-background-size:    contain;
+    -o-background-size:         contain;
+    background-size:            contain;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:        hidden;
+    z-index: 10000;
+}
+    /* Hide images */
+    #glisse-overlay-content img{display:none;}
+
+    /* Shake effect */
+    #glisse-overlay-content.shake {
+        -webkit-animation: shake 600ms 1;
+        -moz-animation:    shake 600ms 1;
+        -ms-animation:     shake 600ms 1;
+        -o-animation:      shake 600ms 1;
+        animation:         shake 600ms 1;
+    }
+
+/* Glisse: Close button */
+#glisse-close {
+    font-size: 48px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    z-index: 10100;
+}
+
+/* Glisse: Spinner */
+#glisse-spinner {
+    position:fixed;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    z-index: 10000;
+}
+
+/* Glisse: Controls bar */
+/* Wrapper */
+#glisse-wrapper i {
+    color: white;
+    font-size: 72px;
+}
+
+#glisse-controls {z-index: 10000}
+    /* Prev/Next button */
+    .glisse-prev, .glisse-next {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 82px;
+        z-index: 10000;
+    }
+    .glisse-prev {
+        left: 0;
+    }
+    .glisse-next {
+        right: 0;
+    }
+    .glisse-prev:hover, .glisse-next:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .glisse-prev > a > i, .glisse-next > a > i {
+        position: absolute;
+        margin: auto 0 auto 0;
+        top: 0;
+        bottom: 0;
+        display: table;
+        padding: 15px;
+        z-index: 10000;
+    }
+
+    #glisse-controls .ended a {cursor:default}
+    #glisse-controls .ended a i {opacity: 0.3;}
+
+/* Glisse: Keyframes */
+@-webkit-keyframes shake {
+    0%, 100% {-webkit-transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
+
+@-moz-keyframes shake {
+    0%, 100% {-moz-transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {-moz-transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {-moz-transform: translateX(10px);}
+}
+
+@-ms-keyframes shake {
+    0%, 100% {-ms-transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {-ms-transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {-ms-transform: translateX(10px);}
+}
+
+@-o-keyframes shake {
+    0%, 100% {-o-transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {-o-transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {-o-transform: translateX(10px);}
+}
+
+@keyframes shake {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {transform: translateX(10px);}
+}

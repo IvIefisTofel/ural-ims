@@ -1,0 +1,53 @@
+@font-face {
+	font-family: 'ims-icons';
+	src:url('fonts/ims-icons.eot?-r1p3jx');
+	src:url('fonts/ims-icons.eot?#iefix-r1p3jx') format('embedded-opentype'),
+		url('fonts/ims-icons.woff?-r1p3jx') format('woff'),
+		url('fonts/ims-icons.ttf?-r1p3jx') format('truetype'),
+		url('fonts/ims-icons.svg?-r1p3jx#ims-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="ims-"], [class*=" ims-"] {
+	font-family: 'ims-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ims-wood:before {
+	content: "\e606";
+}
+
+.ims-machining:before {
+	content: "\e604";
+}
+
+.ims-bucket:before {
+	content: "\e600";
+}
+
+.ims-mail-to:before {
+	content: "\e605";
+}
+
+.ims-mail:before {
+	content: "\e603";
+}
+
+.ims-envelope:before {
+	content: "\e608";
+}
+
+.ims-cancel:before {
+	content: "\e602";
+}
+

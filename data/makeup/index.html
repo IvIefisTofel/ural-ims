@@ -1,200 +1,262 @@
 <html lang="ru">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Ural-IMS</title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Ural-IMS</title>
 
-		<!-- Description, Keywords and Author -->
-		<meta name="description" content="Your description">
-		<meta name="keywords" content="Your,Keywords">
-		<meta name="author" content="ResponsiveWebInc">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico">
 
-		<!-- Styles -->
-		<!-- Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-        <!-- jQuery UI -->
-        <!--<link href="css/jquery-ui.min.css" rel="stylesheet">-->
-        <!-- Font awesome CSS -->
-		<link href="css/font-awesome.min.css" rel="stylesheet">
-        <!-- Snappish CSS -->
-        <link href="css/jquery.snappish.css" rel="stylesheet">
-        <!-- Slippry slider -->
-        <link href="css/slippry.css" rel="stylesheet">
+    <!-- Description, Keywords and Author -->
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your,Keywords">
+    <meta name="author" content="ResponsiveWebInc">
 
-		<!-- Main CSS -->
-        <link href="css/general.css" rel="stylesheet">
-        <link href="css/index.css" rel="stylesheet">
-				
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="img/favicon.ico">
+    <!-- Styles -->
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font awesome CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- jScrollPane CSS -->
+    <link href="css/jquery.jscrollpane.css" rel="stylesheet">
+    <!-- Glisse CSS -->
+    <link href="css/glisse.css" rel="stylesheet">
 
-        <!-- Yandex Maps -->
-        <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-	</head>
-	
-	<body>
-        <!-- Navigation -->
-        <nav>
-            <div class="ui-outer" style="width: 45px;">
-                <!-- Navigation -->
-                <a href="#home" class="ui-nav" data-slide-num="0" data-placement="right" data-original-title="Домой">
-                    <i class="fa fa-home"></i> &nbsp;
-                </a>
-                <a href="#woodworking" class="ui-nav" data-slide-num="1" data-placement="right" data-original-title="Деревообработка">
-                    <i class="fa fa-tree"></i> &nbsp;
-                </a>
-                <a href="#machining" class="ui-nav" data-slide-num="2" data-placement="right" data-original-title="Механообработка">
-                    <i class="fa fa-cog"></i> &nbsp;
-                </a>
-                <a href="#plasticMolding" class="ui-nav" data-slide-num="3" data-placement="right" data-original-title="Литье пластмасс">
-                    <i class="fa fa-tint"></i> &nbsp;
-                </a>
-                <a href="#achievements" class="ui-nav" data-slide-num="4" data-placement="right" data-original-title="Наши достижения">
-                    <i class="fa fa-mortar-board"></i> &nbsp;
-                </a>
-                <a href="#contacts" class="ui-nav" data-slide-num="5" data-placement="right" data-original-title="Контакты">
-                    <i class="fa fa-envelope"></i> &nbsp;
-                </a>
+    <!-- Main CSS -->
+    <link href="css/general.css" rel="stylesheet">
+    <link href="css/icons.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
+    <link href="css/slider.css" rel="stylesheet">
+
+    <link href="css/ims-icons.css" rel="stylesheet">
+
+    <!-- For animation slide effects -->
+    <script src="js/modernizr.custom.js"></script>
+    <!-- Yandex Maps -->
+    <!--<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>-->
+</head>
+
+<body>
+<!-- Slider -->
+<section class="slider">
+    <!-- Slider Navigation -->
+    <nav class="slider-nav">
+        <a id="movePrev" class="prev" href="#" data-animation="62">
+                    <span class="icon-wrap">
+                        <i class="fa fa-angle-double-left"></i>
+                    </span>
+            <img src="">
+        </a>
+        <a id="moveNext" class="next" href="#" data-animation="63">
+                    <span class="icon-wrap">
+                        <i class="fa fa-angle-double-right"></i>
+                    </span>
+            <img src="">
+        </a>
+    </nav>
+    <!-- Slider content -->
+    <div class="slider-content"></div>
+
+</section>
+
+<!-- Menu -->
+<nav class="nav clearfix home-menu">
+    <button class="nav-el" id="el-topleft" data-id="ov-topleft">
+        <i class="ims-wood"></i>
+
+        <div class="title">Деревообработка</div>
+    </button>
+    <button class="nav-el" id="el-topright" data-id="ov-topright">
+        <i class="ims-machining"></i>
+
+        <div class="title">Мхеанообработка</div>
+    </button>
+    <button class="nav-el" id="el-btmleft" data-id="ov-btmleft">
+        <i class="ims-bucket"></i>
+
+        <div class="title">Литье пластмасс</div>
+    </button>
+    <button class="nav-el" id="el-btmright" data-id="ov-btmright">
+        <i class="ims-mail-to"></i>
+
+        <div class="title">Обратная связь</div>
+    </button>
+</nav>
+
+<!-- Contacts -->
+<div class="main-contacts" style="bottom: -465px;">
+    <div class="main-contacts-footer">
+
+        <!-- Arrow icon -->
+        <i class="fa fa-angle-double-up ui-btn"></i>
+
+        <!-- Heading -->
+        <h2>Контакты</h2>
+
+        <!-- Contact details -->
+        <div class="details">
+            <i class="fa fa-phone"></i>+7 (967) 919-03-28<br>
+            <i class="fa fa-envelope"></i>novoselovsa@ural-ims.ru
+        </div>
+
+        <!-- Social -->
+        <div class="social">
+            <a href="#"><i class="fa fa-vk"></i></a>
+            <a href="#"><i class="fa fa-social-1"></i></a>
+            <a href="#"><i class="fa fa-social-2"></i></a>
+            <a href="#"><i class="fa fa-skype"></i></a>
+            <a href="#"><i class="fa fa-social-3"></i></a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Overlays (hidden by default)-->
+<section class="overlay" id="ov-topleft">
+    <div class="wrap">
+        <div class="wrap-main">
+            <div class="vCenter">
+                <h1 class="header">Section 1</h1>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
-        </nav>
-
-        <!-- UI - X Starts -->
-		<div class="ui">
-			<!-- Wrapper Starts -->
-			<div id="wrapper" class="snappish-wrapper">
-
-				<!-- Snappish Main -->
-				<div class="snappish-main snappish-6-slides">
-					<!-- Карусель -->
-                    <div id="home" class="snappish-slide">
-                        <ul id="pictures-carousel">
-                            <li
-                                header="Деревообработка"
-                                content="Процесс обработки древесины, производство продукции из древесины, а также группа технических дисциплин, охватывающих эти понятия.<br>
-                                        <a href='https://ru.wikipedia.org/wiki/Деревообработка' target='_blank'>Больше информации</a>"
-                            >
-                                <img src="img/font1.jpg">
-                            </li>
-                            <li
-                                header="Механообработка"
-                                content="Обработка изделий из стали и других материалов с помощью механического
-                                    воздействия с применением резца, сверла, фрезы и другого режущего инструмента.<br>
-                                    Сам процесс обработки осуществляется на металлорежущих станках,
-                                    в установленном порядке согласно технологического процесса.<br>
-                                    <a href='https://ru.wikipedia.org/wiki/Механическая_обработка' target='_blank'>Больше информации</a>"
-                            >
-                                <img src="img/font2.jpg">
-                            </li>
-                            <li header="Пресс-формы <a href='https://ru.wikipedia.org/wiki/Пресс-форма' target='_blank'>Что это?</a>">
-                                <img src="img/font3.jpg">
-                            </li>
-                        </ul>
-                        <div class="slider-caption-wrap caption-left">
-                            <h3 style="display: none"></h3>
-                                <!-- Details -->
-                            <div class="ui-details" style="display: none">
-                                <!-- Paragraph -->
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-
-					<!-- Деревообработка -->
-					<div id="woodworking" class="snappish-slide bg-purple">
-                        <div class="snappish-content">
-                            <h2>Деревообработка</h2>
-                        </div>
-					</div>
-					<!-- Механообработка -->
-					<div id="machining" class="snappish-slide bg-blue">
-                        <div class="snappish-content">
-                            <h2>Механообработка</h2>
-                        </div>
-					</div>
-                    <!-- Литье пластмасс -->
-                    <div id="plasticMolding" class="snappish-slide bg-purple">
-                        <div class="snappish-content">
-                            <h2>Литье пластмасс</h2>
-                        </div>
-                    </div>
-                    <!-- Наши достижения -->
-                    <div id="achievements" class="snappish-slide bg-blue">
-                        <div class="snappish-content">
-                            <h2>Наши достижения</h2>
-                        </div>
-                    </div>
-                    <!-- Контакты -->
-                    <div id="contacts" class="snappish-slide bg-red">
-                        <div class="snappish-content">
-                            <h2>Контакты</h2>
-                        </div>
-                        <div id="y-maps"></div>
-                    </div>
-				</div>
-			</div>
-			<!-- Wrapper Ends -->
-
-            <!-- Contacts -->
-            <div class="ui-contacts" style="bottom: -465px;">
-                <div class="ui-footer bg-red">
-
-                    <!-- Arrow icon -->
-                    <i class="fa fa-angle-double-up ui-btn"></i>
-
-                    <!-- Heading -->
-                    <h2>Контакты</h2>
-
-                    <!-- Contact details -->
-                    <div class="details">
-                        <i class="fa fa-phone"></i> +(49)393-492-3923 <br> <i class="fa fa-envelope"></i> something@gmail.com
-                    </div>
-
-                    <!-- Social -->
-                    <div class="social">
-                        <a href="#"><i class="fa fa-vk"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                        <a href="#"><i class="fa fa-youtube"></i></a>
-                    </div>
-
-                </div>
+        </div>
+        <div class="wrap-gallary">
+            <div class="gallary-border"></div>
+            <div class="gallary-container jScrollPane">
+                <div class="gallary"></div>
             </div>
-            <!-- Contacts ends -->
+            <div class="preloader"><i class="fa fa-cog fa-spin"></i></div>
+        </div>
+    </div>
 
-		</div>
-		<!-- UI - X Ends -->
-				
-		<!-- Javascript files -->
-		<!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <!--<script src="js/jquery-ui.min.js"></script>-->
-		<!-- Bootstrap JS -->
-		<script src="js/bootstrap.min.js"></script>
+    <button class="close"><i class="icon-cancel"></i></button>
+    <button class="label" disabled><i class="ims-wood"></i></button>
+</section>
+<section class="overlay" id="ov-topright">
+    <div class="wrap">
+        <div class="wrap-main">
+            <div class="vCenter">
+                <h1 class="header">Section 2</h1>
 
-        <!-- Placeholder JS -->
-        <script src="js/placeholders.jquery.min.js"></script>
-		
-		<!-- Snappish JS -->
-		<!-- Mouse Wheel JS, Event Move JS, Event Swipe JS, Snappish Main JS -->
-		<script src="js/jquery.mousewheel.min.js"></script>
-		<script src="js/jquery.event.move.js"></script>
-		<script src="js/jquery.event.swipe.js"></script>
-		<script src="js/jquery.snappish.js"></script>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+        <div class="wrap-gallary">
+            <div class="gallary-border"></div>
+            <div class="gallary-container jScrollPane">
+                <div class="gallary"></div>
+            </div>
+            <div class="preloader"><i class="fa fa-cog fa-spin"></i></div>
+        </div>
+    </div>
 
-        <!-- Slipply slider -->
-        <script src="js/slippry.min.js"></script>
+    <button class="close"><i class="icon-cancel"></i></button>
+    <button class="label" disabled><i class="ims-machining"></i></button>
+</section>
+<section class="overlay" id="ov-btmleft">
+    <div class="wrap">
+        <div class="wrap-main">
+            <div class="vCenter">
+                <h1 class="header">Section 3</h1>
 
-        <!-- General js -->
-        <script src="js/style.js"></script>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+        <div class="wrap-gallary">
+            <div class="gallary-border"></div>
+            <div class="gallary-container jScrollPane">
+                <div class="gallary"></div>
+            </div>
+            <div class="preloader"><i class="fa fa-cog fa-spin"></i></div>
+        </div>
+    </div>
 
-		<!-- Respond JS for IE8 -->
-		<script src="js/respond.min.js"></script>
-		<!-- HTML5 Support for IE -->
-		<script src="js/html5shiv.js"></script>
-		
-		<script>
+    <button class="close"><i class="icon-cancel"></i></button>
+    <button class="label" disabled><i class="ims-bucket"></i></button>
+</section>
+<section class="overlay" id="ov-btmright">
+    <div class="wrap contact-us">
+        <h1>Обратная связь</h1>
 
-        </script>
-		
-    </body>
+        <form>
+            <fieldset class="msg-params">
+                        <span class="input input--nao">
+					        <input class="input__field input__field--nao" type="email" id="email" name="email">
+					        <label class="input__label input__label--nao" for="email">
+                                <span class="input__label-content input__label-content--nao">Email</span>
+                            </label>
+					        <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60"
+                                 preserveAspectRatio="none">
+                                <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
+                            </svg>
+				        </span>
+                        <span class="input input--nao">
+					        <input class="input__field input__field--nao" type="text" id="title" name="title">
+					        <label class="input__label input__label--nao" for="title">
+                                <span class="input__label-content input__label-content--nao">Тема</span>
+                            </label>
+					        <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60"
+                                 preserveAspectRatio="none">
+                                <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"></path>
+                            </svg>
+				        </span>
+            </fieldset>
+            <fieldset class="msg-message">
+                        <textarea name="message" id="ckEditor" rows="10" cols="80">
+                            Текст сообщения
+                        </textarea>
+            </fieldset>
+        </form>
+    </div>
+
+    <button class="close"><i class="icon-cancel"></i></button>
+    <button class="label" disabled><i class="ims-mail-to"></i></button>
+</section>
+
+<!-- Javascript files -->
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Glisse JS -->
+<script src="js/glisse.js"></script>
+<!-- History js todo: Подключить!!! -->
+<!--<script src="js/jquery.history.js"></script>-->
+
+<!-- jScrollPane -->
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/jquery.jscrollpane.min.js"></script>
+
+<!-- ckEditor -->
+<script src="ckeditor/ckeditor.js"></script>
+
+<!-- Creative Form -->
+<script src="js/classie.js"></script>
+
+<!-- General js -->
+<script src="js/style.js"></script>
+<script src="js/slider.js"></script>
+
+<!-- Respond JS for IE8 -->
+<script src="js/respond.min.js"></script>
+<!-- HTML5 Support for IE -->
+<script src="js/html5shiv.js"></script>
+</body>
 </html>

@@ -1,0 +1,56 @@
+@font-face {
+	font-family: 'ims-icons';
+	src:url('../fonts/ims-icons/ims-icons.eot?qayxk5');
+	src:url('../fonts/ims-icons/ims-icons.eot?#iefixqayxk5') format('embedded-opentype'),
+		url('../fonts/ims-icons/ims-icons.woff?qayxk5') format('woff'),
+		url('../fonts/ims-icons/ims-icons.ttf?qayxk5') format('truetype'),
+		url('../fonts/ims-icons/ims-icons.svg?qayxk5#ims-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="ims-"], [class*=" ims-"] {
+    font-family: 'ims-icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ims-wood:before {
+    content: "\e606";
+}
+
+.ims-machining:before {
+    font-size: 120%;
+    /*margin-left: -2px;*/
+    content: "\e604";
+}
+
+.ims-bucket:before {
+    content: "\e600";
+}
+
+.ims-mail-to:before {
+    font-size: 140%;
+    margin-left: -10px;
+    content: "\e605";
+}
+
+.ims-mail:before {
+    content: "\e603";
+}
+
+.ims-envelope:before {
+    content: "\e608";
+}
+
+.ims-cancel:before {
+    content: "\e602";
+}
