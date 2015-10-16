@@ -1,0 +1,232 @@
+<?php
+
+namespace Settings\Entity;
+
+use \Doctrine\ORM\Mapping as ORM;
+
+use Zend\Form\Annotation;
+
+/**
+ * Users
+ *
+ * @ORM\Table(name="lit_settings")
+ * @ORM\Entity
+ */
+class Settings
+{
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="settingID", type="integer", options={"unsigned":true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Annotation\Exclude()
+     */
+    private $settingID;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="groupID", type="integer", nullable=false, options={"unsigned":true})
+     */
+    private $groupID;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="headerName", type="string", length=255, nullable=false)
+     * @Annotation\Filter({"name":"StringTrim"})
+     * @Annotation\Validator({"name":"StringLength", "options":{"min":1, "max":255}})
+     * @Annotation\Validator({"name":"Regex", "options":{"pattern":"/^[a-zA-Z][a-zA-Z0-9_-]{0,24}$/"}})
+     * @Annotation\Attributes({"type":"text"})
+     * @Annotation\Options({"label":"name:"})
+     */
+    private $headerName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @Annotation\Filter({"name":"StringTrim"})
+     * @Annotation\Validator({"name":"StringLength", "options":{"min":1, "max":255}})
+     * @Annotation\Validator({"name":"Regex", "options":{"pattern":"/^[a-zA-Z][a-zA-Z0-9_-]{0,24}$/"}})
+     * @Annotation\Attributes({"type":"text"})
+     * @Annotation\Options({"label":"name:"})
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="text", nullable=false)
+     */
+    private $value;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="htmlControlType", type="string", length=255, nullable=false)
+     * @Annotation\Filter({"name":"StringTrim"})
+     * @Annotation\Validator({"name":"StringLength", "options":{"min":1, "max":255}})
+     * @Annotation\Validator({"name":"Regex", "options":{"pattern":"/^[a-zA-Z][a-zA-Z0-9_-]{0,24}$/"}})
+     * @Annotation\Attributes({"type":"text"})
+     * @Annotation\Options({"label":"htmlControlType:"})
+     */
+    private $htmlControlType;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="weight", type="integer", nullable=false, options={"unsigned":true})
+     */
+    private $weight;
+
+    /**
+     * Get settingID
+     *
+     * @return int
+     */
+    public function getSettingID()
+    {
+        return $this->settingID;
+    }
+
+    /**
+     * Set groupID
+     *
+     * @param int $groupID
+     * @return Settings
+     */
+    public function setGroupID($groupID)
+    {
+        $this->groupID = $groupID;
+
+        return $this;
+    }
+
+    /**
+     * Get groupID
+     *
+     * @return int
+     */
+    public function getGroupID()
+    {
+        return $this->groupID;
+    }
+
+    /**
+     * Set headerName
+     *
+     * @param string $headerName
+     * @return Settings
+     */
+    public function setHeaderName($headerName)
+    {
+        $this->headerName = $headerName;
+
+        return $this;
+    }
+
+    /**
+     * Get headerName
+     *
+     * @return string
+     */
+    public function getHeaderName()
+    {
+        return $this->headerName;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Settings
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     * @return Settings
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set htmlControlType
+     *
+     * @param string $htmlControlType
+     * @return Settings
+     */
+    public function setHtmlControlType($htmlControlType)
+    {
+        $this->htmlControlType = $htmlControlType;
+
+        return $this;
+    }
+
+    /**
+     * Get htmlControlType
+     *
+     * @return string
+     */
+    public function getHtmlControlType()
+    {
+        return $this->htmlControlType;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param int $weight
+     * @return Settings
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return int
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+}

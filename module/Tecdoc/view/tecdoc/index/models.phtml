@@ -1,0 +1,21 @@
+<? $this->headTitle('Список Моделей'); ?>
+<div class="divlink">
+    <H2>Список Моделей</H2>
+    <table border='1' frame='box' rules='all'>
+        <tr>
+            <th>Название</th>
+            <th>С</th>
+            <th>По</th>
+        </tr>
+        <? foreach($models as $model): ?>
+            <? /* @var $model \Tecdoc\Entity\Models */ ?>
+            <tr>
+                <td>
+                    <a href='<?=$this->url('cars', ['modId' => $model->getModId()]); ?>'><?=$model->getModName(); ?></a>
+                </td>
+                <td><?=$model->getPconStart(); ?></td>
+                <td><?=$model->getPconEnd(); ?></td>
+            </tr>
+        <? endforeach; ?>
+    </table>
+</div>

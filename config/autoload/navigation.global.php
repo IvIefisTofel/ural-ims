@@ -12,58 +12,135 @@
  */
 // from http://framework.zend.com/manual/2.1/en/modules/zend.navigation.quick-start.html
 // the array was empty before that
-return array(
-    'navigation' => array(
-        'default' => array(
-            array(
-                'label' => 'Home',
+return [
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Главная',
                 'route' => 'home',
-            ),
-            array(
-                'label' => 'User',
-                'uri'   => '#',
-                'pages' => array(
-                    array(
-                        'label' => 'LogIn',
-                        'route' => 'admin-login',
-                    ),
-                    array(
-                        'label' => 'LogOut',
-                        'route' => 'logout',
-                    ),
-                 ),
-            ),
-            array(
-                'label'      => 'Test',
-                'route'      => 'test',
-                'action'     => 'test',
-                'resource'	 => 'Application\Controller\Index',
-                'privilege'	 => 'test',
-            ),
-            array(
-                'label' => 'Google',
-                'uri'   => 'http://www.google.ru/',
-            ),
-        ),
-        'admin-panel' => array(
-            array(
-                'label'      => 'Admin',
-                'route'      => 'admin',
-                'resource'	 => 'Admin\Controller\Index',
+            ],
+            [
+                'label' => 'Каталог',
+                'route' => 'catalog',
+            ],
+            [
+                'label' => 'Новости',
+                'uri' => '#',
+            ],
+            [
+                'label' => 'Контакты',
+                'uri' => '#',
+            ],
+            [
+                'label' => 'Написать нам',
+                'uri' => '#',
+            ],
+        ],
+        'admin-panel'   => [
+            [
+                'label'     => 'Главная',
+                'route'     => 'admin',
+                'resource'	=> 'Admin\Controller\Index',
+                'privilege'	=> 'index',
+                'icon'      => 'fa fa-th-large',
+            ],
+            [
+                'label'     => 'Настройки',
+                'uri'       => '#',
+                'icon'      => 'fa fa-cogs',
+                'pages'     => [
+                    [
+                        'label'      => 'Параметры',
+                        'route'      => 'admin/default',
+                        'controller' => 'settings',
+                        'action'     => 'index',
+                        'icon'       => 'fa fa-th-list',
+                        'resource'	 => 'Admin\Controller\Settings',
+                        'privilege'	 => 'index',
+                    ],
+                    [
+                        'label'      => 'Группы параметров',
+                        'route'      => 'admin/default',
+                        'controller' => 'settings',
+                        'action'     => 'groups',
+                        'icon'       => 'fa fa-group',
+                        'resource'	 => 'Admin\Controller\Settings',
+                        'privilege'	 => 'index',
+                    ],
+                ],
+            ],
+            [
+                'label'      => 'Страницы',
+                'route'      => 'admin/default',
+                'controller' => 'pages',
+                'icon'       => 'fa fa-television',
+                'resource'	 => 'Admin\Controller\Pages',
                 'privilege'	 => 'index',
-            ),
-            array(
-                'label' => 'LogOut',
-                'route' => 'logout',
-                'resource'	 => 'Admin\Controller\Index',
+            ],
+            [
+                'label'      => 'Формы',
+                'route'      => 'admin/forms',
+                'icon'       => 'fa fa-list-alt',
+                'resource'	 => 'Admin\Controller\Forms',
                 'privilege'	 => 'index',
-            ),
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
+            ],
+            [
+                'label'     => 'Файлы',
+                'uri'       => '#',
+                'icon'      => 'fa fa-folder-open',
+                'pages'     => [
+                    [
+                        'label'      => 'Все файлы',
+                        'route'      => 'admin/default',
+                        'controller' => 'files',
+                        'action'     => 'index',
+                        'icon'       => 'fa fa-files-o',
+                        'resource'	 => 'Admin\Controller\Files',
+                        'privilege'	 => 'index',
+                    ],
+                    /*[
+                        'label'      => 'Изображения',
+                        'route'      => 'admin/default',
+                        'controller' => 'files',
+                        'action'     => 'images',
+                        'icon'       => 'fa fa-picture-o',
+                        'resource'	 => 'Admin\Controller\Files',
+                        'privilege'	 => 'index',
+                    ],*/
+                ],
+            ],
+            [
+                'label'      => 'Пользоватли',
+                'route'      => 'admin/default',
+                'controller' => 'users',
+                'icon'       => 'fa fa-male',
+                'pages'     => [
+                    [
+                        'label'      => 'Все пользователи',
+                        'route'      => 'admin/default',
+                        'controller' => 'users',
+                        'icon'       => 'fa fa-users',
+                        'resource'	 => 'Admin\Controller\Users',
+                        'privilege'	 => 'index',
+                    ],
+                    [
+                        'label'      => 'Ваш профиль',
+                        'route'      => 'admin/default',
+                        'controller' => 'users',
+                        'action'     => 'editprofile',
+                        'icon'       => 'fa fa-user',
+                        'resource'	 => 'Admin\Controller\Users',
+                        'privilege'	 => 'index',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
-            'adminPanel'   => 'Navigator\Navigation\Service\AdminPanelNavigationFactory',
-        ),
-    ),
-);
+            'adminPanel' => 'Navigator\Navigation\Service\AdminPanelNavigationFactory',
+            'dbNavigation' => 'Navigator\Navigation\Service\DbNavigationFactory',
+        ],
+    ],
+];

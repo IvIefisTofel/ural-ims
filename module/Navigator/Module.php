@@ -46,7 +46,7 @@ class Module
 
 					$role = \AuthDoctrine\Acl\Acl::DEFAULT_ROLE; // The default role is guest $acl
 					if ($auth->hasIdentity())
-                        $role = $auth->getIdentity()->getUsrRoleId();
+                        $role = $auth->getIdentity()->getUserRoleId();
 
                     $navigation = $pm->get('Zend\View\Helper\Navigation');
                     $navigation->setAcl($acl)->setRole((string)$role);

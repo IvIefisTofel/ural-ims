@@ -1,10 +1,11 @@
 <?php
 namespace AuthDoctrine;
 
-// Add this for SMTP transport
 use Zend\ServiceManager\ServiceManager;
 use Zend\Mail\Transport\Smtp;
 use Zend\Mail\Transport\SmtpOptions;
+use Zend\Validator\AbstractValidator;
+use Zend\Mvc\MvcEvent;
 
 class Module
 {
@@ -23,7 +24,7 @@ class Module
             ),
         );
     }
-	
+
     public function getServiceConfig()
     {
         return array(
@@ -53,5 +54,15 @@ class Module
 				},
             )
         );
+    }
+
+    public function onBootstrap(MvcEvent $e)
+    {
+        $translator=$e->getApplication()->getServiceManager()->get('translator');
+        $translator->addTranslationFile(
+            'phpArray',
+            'vendor/zendframework/zend-i18n-resources/languages/ru/Zend_Validate.php'
+        );
+        AbstractValidator::setDefaultTranslator($translator);
     }
 }	

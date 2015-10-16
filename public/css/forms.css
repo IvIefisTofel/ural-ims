@@ -1,0 +1,42 @@
+form.feedback-form {
+    max-width: 500px;
+}
+.return-admin {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.return-admin a {
+    color: #999c9e;
+    font-weight: 600;
+    text-decoration: none;
+}
+.form-group {
+    margin: 10px;
+}
+.form-group dt {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    text-align: right;
+}
+.form-group dd {
+    display: inline-block;
+    margin-left: 10px;
+    width: 75%;
+}
+.form-group dd input:focus {
+    box-shadow: none;
+}
+.form-group dd input,
+.form-group dd textarea {
+    width: 100%;
+}
+.form-group dd textarea {
+    min-height: 100px;
+}
+.form-group > input[type=submit],
+.form-group > button[type=submit] {
+    margin: 5px 0 5px calc(20% + 15px);
+    display: block;
+}

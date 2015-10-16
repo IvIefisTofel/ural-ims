@@ -6,6 +6,7 @@ use Zend\Mvc\MvcEvent;
 
 use AuthDoctrine\Acl\Acl;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 
 class Module
 {
@@ -28,6 +29,18 @@ class Module
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
+
+        $repository = $e->getApplication()->getServiceManager()->get('Doctrine\ORM\EntityManager')->getRepository('Settings\Entity\Settings');
+        $lockscreenEnabled = $repository->findOneByName('lockscreen_enabled');
+        if ($lockscreenEnabled != null && $lockscreenEnabled->getValue()) {
+            $lockscreenTimeout = $repository->findOneByName('lockscreen_timeout');
+            if ($lockscreenTimeout != null) {
+                /* @var $baseModel ViewModel */
+                $baseModel = $e->getViewModel();
+                $baseModel->setVariable('lockscreen_timeout', $lockscreenTimeout->getValue() * 1000);
+            }
+        }
+
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
         $eventManager->attach('route', array($this, 'onRoute'), -100);
@@ -42,18 +55,9 @@ class Module
                 $controller->layout($config['module_layouts'][$moduleNamespace]);
             }
         }, 100);
-
-        $translator = new \Zend\I18n\Translator\Translator();
-        $translator->addTranslationFile(
-            'phpArray',
-            'vendor/zendframework/zendframework/resources/languages/ru/Zend_Validate.php',
-            'default',
-            'ru_RU'
-        );
-        \Zend\Validator\AbstractValidator::setDefaultTranslator(new \Zend\Mvc\I18n\Translator($translator));
     }
 
-    public function onRoute(\Zend\EventManager\EventInterface $e) // Event manager of the app
+    public function onRoute(\Zend\EventManager\EventInterface $e)
     {
         $application = $e->getApplication();
         $routeMatch = $e->getRouteMatch();
@@ -64,7 +68,7 @@ class Module
 
         $role = Acl::DEFAULT_ROLE;
         if ($auth->hasIdentity())
-            $role = $auth->getIdentity()->getUsrRoleId();
+            $role = $auth->getIdentity()->getUserRoleId();
 
         $controller = $routeMatch->getParam('controller');
         $action = $routeMatch->getParam('action');
@@ -84,6 +88,38 @@ class Module
 
                 $routeMatch->setParam('controller', 'AuthDoctrine\Controller\Index');
                 $routeMatch->setParam('action', 'accessdenied');
+
+                if ($e->getRouteMatch()->getParam('__NAMESPACE__') == 'Admin\Controller' &&
+                    $e->getApplication()->getServiceManager()->get('doctrine.authenticationservice.orm_default')->getIdentity()) {
+                    $request = $e->getApplication()->getServiceManager()->get('request');
+                    if ($request->isXmlHttpRequest() && $request->isPost()) {
+                        $baseModel =  new JsonModel(array(
+                            'error' => true,
+                            'msgHeader' => 'Ошибка',
+                            'message' => 'Не достаточно прав.',
+                        ));
+                        $e->setViewModel($baseModel);
+                    } else {
+                        $e->getViewModel()->setTemplate('layout/admin');
+                        $e->setError('ACL_ACCESS_DENIED')->setParam('route', $routeMatch->getMatchedRouteName());
+                        $e->getTarget()->getEventManager()->trigger('dispatch.error', $e);
+
+                        $result = $e->getResult();
+
+                        if ($result instanceof StdResponse) {
+                            return;
+                        }
+
+                        $baseModel = $e->getViewModel();
+                        $baseModel->setTemplate('layout/admin');
+
+                        $model = new ViewModel();
+                        $model->setTemplate('error/accessdenied');
+
+                        $baseModel->addChild($model);
+                        $baseModel->setTerminal(true);
+                    }
+                }
             }, 1000);
 
             /**

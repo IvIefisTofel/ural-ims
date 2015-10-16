@@ -1,44 +1,81 @@
-<div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your admin on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
+<? $this->headTitle('Главная'); ?>
+<h4>Запчасти для иномарок в Саратове</h4>
+<span>В продаже появились оригинальные  б/у запчасти, детали кузова по низким ценам, смешные цены на двери, крыши,
+    крылья, крышки багажников, авто-стекло...<br>
+    Более 100 000 деталей кузова на центральном складе, срок исполнения 1-3 дня.<br>
+    Мы занимаемся деталями подвески, наивысшего качества: Амортизаторы(Kayaba,SACHS,Bilstein,Boge), Рычаги(Lemforder,
+    Lucas (TRW) Lemforder), шаровые, наконечники, стойки стабилизатора, и др.(Moog, Lemforder, Lucas\TRW, 555, CTR)<br>
+    Так же, у нас вы можете приобрести, запчасти для ТО: Свечи, Фильтра, Ремни, Ролики, Тормозные колодки и диски и тд.<br>
+    Необходимые Вам автозапчасти для иномарок, которые не указаны в списке, вы тоже можете приобрести под заказ.
+</span>
+<div style="border-bottom: solid 1px #ccc; border-top: solid 1px #ccc; padding: 20px 0;width: 100%;display: inline-block;margin: 20px 0 0; text-align: center;">
+    <span style="width:100%; display: inline-block;">
+        Внимание! Участникам нашей группы BКонтакте предоставляется дополнительная скидка в 5%!
+    </span>
+    <button class="order" style="margin-top: 10px;">Добавиться</button>
 </div>
-
-<div class="row">
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Follow Development') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="https://github.com/zendframework/zf2/issues">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Discover Modules') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Help &amp; Support') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
-            </div>
-        </div>
-    </div>
+<div>
+    <h4>Интернет-магазин www.vin64.ru это:</h4>
+    <ul>
+        <li>
+            <span>
+                <strong>Удобный поиск необходимой запчасти.</strong><br>
+                Мы постарались расположить товары наиболее удобным образом, чтобы упростить поиск необходимой вам детали
+            </span>
+        </li>
+        <li>
+            <span>
+                <strong>Отсутствие регистрации.</strong><br>
+                Для того чтобы сделать заказ Вам необходимо ввести только Ф.И.О. и контактный телефон наличие всех товаров
+            </span>
+        </li>
+        <li>
+            <span>
+                <strong>Любую деталь вы можете приобрести под заказ в кратчайшие сроки</strong>
+            </span>
+        </li>
+        <li>
+            <span>
+                <strong>Сотрудничество с ведущими производителями.</strong><br>
+                Мы сотрудничаем с ведущими поставщиками запчастей для иномарок, тем самым мы позволяем себе снижать цены на все запчасти
+            </span>
+        </li>
+        <li>
+            <span>
+                <strong>Консультация покупателя.</strong><br>
+                Наши менеджеры свяжутся с вами и уточнят точные данные о вашем заказе, а также могут проконсультировать о более выгодной покупке запчасти для вашего автомобиля
+            </span>
+        </li>
+        <li>
+            <span>
+                <strong>Низкие цены на запчасти.</strong><br>
+                Мы стараемся сохранять самые низкие цены на качественные запчасти
+            </span>
+        </li>
+        <li>
+            <span>
+                <strong>Удобное расположение магазина.</strong><br>
+                Перейти в раздел <a href="#">контакты</a>
+            </span>
+        </li>
+    </ul>
+</div>
+<div>
+    <h4>Мы предоставляем самые низкие цены на широкий ассортимент товара.</h4>
+    У нас Вы сможете найти:<br>
+    Автозапчасти для иномарок в саратовекузовные детали: крылья, капоты, суппорты радиаторов,передние и задние бамперы,
+    молдинги кузова, подкрылки, защиты поддона, решетки бамперов и радиаторов, панели багажника.<br>
+    Оптические элементы: фонари задние внешние и внутренние, противотуманные фары, фары передние с корректором и без,
+    указатели поворотов и боковые зеркала с подогоревом и без, автоматические и механические детали систем охлаждения,
+    отопления и кондиционирования: радиаторы охлаждения, радиаторы кондиционера, компрессоры кондиционера, испарители и
+    радиаторы отопителей и многое другое для вашего автомобиля.<br>
+    Наш интернет-магазин предлагает к Вашему выбору только качественные детали от ведущих производителей мира. Каждая
+    деталь представлена в нескольких видах: оригинальная и аналоговая, поэтому у Вас всегда будет из чего выбрать. Также
+    у нас в наличии Вы всегда сможете найти запчасти для ТО, а наши грамотные специалисты смогут предоставить всю нужную
+    информацию по каждой детали и в случае каких-либо затруднений прийти к вам на помощь.<br>
+    Интернет-магазин <a href="http://vin64.ru">vin64.ru</a> - это отличный выбор для оптовых и розничных покупателей, которым
+    нужны качественные запчасти для иномарок по низким ценам. Мы предоставляем большие скидки постоянным клиентам,
+    поэтому мы рассчитываем на долгое и взаимовыгодное сотрудничество с каждым нашим покупателем.<br>
+    Процедура заказа очень проста, но на всякий случай посетите раздел "Заказ" за подробными советами. Также всегда
+    вашими помощниками станут наши менеджеры и вспомогательный ролик в нижней части страницы.
 </div>

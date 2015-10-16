@@ -1,60 +1,121 @@
 <?=$this->doctype(); ?>
-<?
-//var_dump($this->navigation('navigation')->toArray());
-//exit;
-?>
-
 <html lang="ru">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <?=$this->headTitle('Запчасти для иномарок в Саратове')->setSeparator(' | ')->setAutoEscape(false) ?>
 
-        <?php echo $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
-        ?>
+    <?=$this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
 
-        <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath('css/style.css'))
-                        ->prependStylesheet($this->basePath('css/font-awesome.min.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.png'))
+        ->appendStylesheet($this->basePath('css/font-awesome.min.css'))
+        ->appendStylesheet($this->basePath('css/style.css'))
+        ->appendStylesheet($this->basePath('css/forms.css'))
+    ?>
 
-        <!-- Scripts -->
-        <?php echo $this->headScript()
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
-            ->prependFile($this->basePath('js/jquery.min.js'))
-            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath('js/html5shiv.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
-
-    </head>
-    <body>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <?=$this->navigation('navigation')->menu()->setUlClass('nav navbar-nav')->setPartial('partial/navigation.phtml'); ?>
-                    <?=$this->navigation('adminPanel')->menu()->setUlClass('nav navbar-nav navbar-right')->setPartial('partial/navigation.phtml'); ?>
-                </div>
+    <!--[if lt IE 9]>
+    <script src="<?=$this->basePath('js/html5shiv.js'); ?>"></script>
+    <script src="<?=$this->basePath('js/respond.min.js'); ?>"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <nav class="main-menu">
+                <?=$this->navigation('navigation')->menu()->setPartial('partial/main-navigation.phtml'); /*?>
+                <ul>
+                    <li><a class="active-link-header" href="/">Главная</a></li>
+                    <li><a href="/catalog">Каталог</a></li>
+                    <li><a href="#">Новости</a></li>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#">Написать нам</a></li>
+                </ul>*/?>
+            </nav>
+            <div class="section">
+                <a class="logo" href="<?=$this->basePath('/'); ?>"></a>
+                <aside class="basket">
+                    <span class="name-basket-part">У вас в корзине: <strong>2</strong> детали</span>
+                    <span class="name-basket-part">На сумму <strong>8000</strong> руб.</span>
+                    <div>
+                        <button class="order-">Заказать</button>
+                        <a class="more">Подробнее</a>
+                    </div>
+                    <div class="basket-box">
+                        <div style="display: inline-block; width: 100%;border-bottom: dotted 1px #ccc; position: relative;">
+                            <a class="basket-box-del"></a>
+                            <img class="preview" src="<?=$this->basePath('img/catalog/parts/show_image_in_imgtag.jpg'); ?>" alt="">
+                            <div class="basket-box-discirption">
+                                <h5 class="basket-box-title">Задняя фара BMW i3</h5>
+                                <form>
+                                    <input class="basket-box-minus" type="submit" value="-">
+                                    <input class="basket-box-count" type="text">
+                                    <input class="basket-box-plus" type="submit" value="+">
+                                    <div class="basket-box-total">
+                                        <span class="basket-box-total_count">4000</span>
+                                        <span class="rub">РУБ.</span></div>
+                                </form>
+                            </div>
+                        </div>
+                        <div style="display: inline-block; width: 100%;border-bottom: solid 1px #ccc;margin-bottom: 10px; position: relative;">
+                            <a class="basket-box-del"></a>
+                            <img class="preview" src="<?=$this->basePath('img/catalog/parts/show_image_in_imgtag.jpg'); ?>" alt="">
+                            <div class="basket-box-discirption">
+                                <h5 class="basket-box-title">Передняя фара BMW i3</h5>
+                                <form>
+                                    <input class="basket-box-minus" type="submit" value="-">
+                                    <input class="basket-box-count" type="text">
+                                    <input class="basket-box-plus" type="submit" value="+">
+                                    <div class="basket-box-total">
+                                        <span class="basket-box-total_count">4000</span>
+                                        <span class="rub">РУБ.</span></div>
+                                </form>
+                            </div>
+                        </div>
+                        <button class="order_">Заказать</button>
+                        <span style="font-size: 12px;   float: right;  text-decoration: underline;    margin-top: 6px;    margin-right: 20px;    display: inline-block;">Удалить все</span>
+                    </div>
+                </aside>
             </div>
+            <div class="search-block">
+                <?/*
+                <form class="search-form" method="get" action="#">
+                    <input type="text" class="search-field">
+                    <input type="submit" class="submit" value="Найти">
+                    <label class="description">Наберите текст, например: <u>Артикул детали</u> <i>или</i> <u>задняя фара BMW i3</u></label>
+                </form>
+                */?>
+            </div>
+        </header>
+        <!--Конец шапки сайта-->
+        <!--Основной контент-->
+        <nav class="sidebar-menu">
+            <?=$this->navigation('dbNavigation')->menu()->setPartial('partial/db-navigation.phtml'); ?>
         </nav>
+        <div class="wrap-content">
+            <?=$this->content; ?>
+        </div>
+        <footer>
+            <nav class="footer-menu">
+                <?=$this->navigation('navigation')->menu()->setPartial('partial/main-navigation.phtml'); /*?>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="#">Новости</a></li>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a class="contact-form">Написать нам</a></li>
+                </ul>
+                */?>
+            </nav>
+        </footer>
+    </div>
+    <?=$this->inlineScript() ?>
 
-        <div class="container">
-            <?php echo $this->content; ?>
-            <hr>
-            <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
-            </footer>
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
-    </body>
+    <?=$this->headScript()
+        ->prependFile($this->basePath('js/main.js'))
+        ->prependFile($this->basePath('js/jquery.min.js'))
+    ?>
+</body>
 </html>

@@ -1,63 +1,48 @@
-ZendSkeletonApplication
-=======================
+Установка на локальный сервер.
+==============================
 
-Introduction
-------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
+* Создать `config/autoload/local.php` из `config/autoload/local.dist.php`
+* Добавить `config/autoload/local.php` в git:ignore (если ещё не добавлен)
 
-Installation
-------------
+* Создать базу данных и прописать доступ к ней в `config/autoload/local.php`
+* Сгенерировать схему бд или накатить последний backup базы
+* Прописать `base_path` в `config/autoload/local.php`
 
-Using Composer (recommended)
-----------------------------
-The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+Установка на хостинг.
+---------------------
+
+* Папка public - основная директория сервера. Остальные на уровень выше.
+* .htaccess APLICATION_ENV меняется на production
+
+
+Обновление зависимостей
+-----------------------
+Скачать менеджер зависимостей
+
+Для Linux
 
     curl -s https://getcomposer.org/installer | php --
-    php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
 
-Alternately, clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
+Для Windows https://getcomposer.org/download/
 
-    cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
-    cd ZendSkeletonApplication
+Обновить зависимости (на сервере обновлять с параметром `--no-dev`)
+
+    php composer.phar update
+    php composer.phar update --no-dev
+
+
+Обновлениее менеджера зависимостей
+
     php composer.phar self-update
-    php composer.phar install
 
-(The `self-update` directive is to ensure you have an up-to-date `composer.phar`
-available.)
 
-Another alternative for downloading the project is to grab it via `curl`, and
-then pass it to `tar`:
+Генерация/обновление схемы базы данных
+--------------------------------------
 
-    cd my/project/dir
-    curl -#L https://github.com/zendframework/ZendSkeletonApplication/tarball/master | tar xz --strip-components=1
+В файле `data/Readme.md` описаны основные команды для doctrine 2
 
-You would then invoke `composer` to install dependencies per the previous
-example.
-
-Using Git submodules
---------------------
-Alternatively, you can install using native git submodules:
-
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git --recursive
-
-Web Server Setup
-----------------
-
-### PHP CLI Server
-
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root directory:
-
-    php -S 0.0.0.0:8080 -t public/ public/index.php
-
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
-
-**Note: ** The built-in CLI server is *for development only*.
+Настройка Веб сервера
+---------------------
 
 ### Apache Setup
 
@@ -75,3 +60,7 @@ project and you should be ready to go! It should look something like below:
             Allow from all
         </Directory>
     </VirtualHost>
+
+Если Apache настроен на директорию `public`, то `base_path` = `/`,
+в остальных случаях в `base_path` следует указать путь от `DocumentRoot`
+в настройках apache до папки `public`

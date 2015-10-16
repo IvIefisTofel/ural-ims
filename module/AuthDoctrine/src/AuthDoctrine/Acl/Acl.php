@@ -25,7 +25,7 @@ use Zend\Permissions\Acl\Acl as ZendAcl,
     Zend\Permissions\Acl\Role\GenericRole as Role,
     Zend\Permissions\Acl\Resource\GenericResource as Resource;
 
-use AuthDoctrine\Entity\User;
+use Users\Entity\User;
 
 /**
  * Class to handle Acl
@@ -47,7 +47,6 @@ class Acl extends ZendAcl {
      * Constructor
      *
      * @param array $config
-     * @return void
      * @throws \Exception
      */
     public function __construct($config)

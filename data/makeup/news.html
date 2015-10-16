@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style/style.css" type="text/css">
+        <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+        <script type="text/javascript" src="js/action.js"></script>
+    </head>
+    <body>
+        <div class="lightbox-contact-form">
+            <button class="contact-form-close">✖</button>
+            <div class="wrap-form">
+                <form class="contact-form-wrap">                    
+                    <input type="text" class="contact-form-first-name input-name" placeholder="Имя" required><br>                    
+                    <input type="text" class="contact-form-first-name input-name" placeholder="Фамилия" required><br>                                       
+                    <input type="text" class="contact-form-telephone input-name" placeholder="Телефон" required><br> 
+                    <textarea class="contact-form-textarea" placeholder="Текст сообщение" required></textarea><br>
+                    <input type="submit" class="contact-form-submit">
+                </form>                
+            </div>
+        </div>
+        <section class="wrap">            
+            <header>
+                <nav class="main-menu">
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>                       
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a class="active-link-header"  href="news.html">Новости</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a class="contact-form">Написать нам</a></li>
+                    </ul>
+                </nav>
+                <div class="section">
+                    <a class="logo" href="index.html"></a>
+                    <aside class="basket">
+                        <span class="name-basket-part">У вас в корзине: <strong>2</strong> детали</span>
+                        <span class="name-basket-part">На сумму <strong>8000</strong> руб.</span> 
+                        <div>
+                            <button class="order-">Заказать</button>
+                            <a class="more">Подробнее</a>
+                        </div>
+                        <div class="basket-box">
+                            <div class="basket-box-hr-dotted">
+                                <a class="basket-box-del"></a>
+                                <img class="preview" src="img/catalog/parts/show_image_in_imgtag.jpg" alt="">
+                                <div class="basket-box-discirption">
+                                    <h5 class="basket-box-title">Задняя фара BMW i3</h5>
+                                    <form>
+                                        <input class="basket-box-minus" type="submit" value="-">
+                                        <input class="basket-box-count" type="text">                                        
+                                        <input class="basket-box-plus" type="submit" value="+">
+                                        <div class="basket-box-total">
+                                            <span class="basket-box-total_count">4000</span>
+                                            <span class="rub">РУБ.</span></div>                                            
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="basket-box-hr-last-box">
+                                 <a class="basket-box-del"></a>
+                                <img class="preview" src="img/catalog/parts/show_image_in_imgtag.jpg" alt="">
+                                <div class="basket-box-discirption">
+                                    <h5 class="basket-box-title">Передняя фара BMW i3</h5>
+                                    <form>
+                                        <input class="basket-box-minus" type="submit" value="-">
+                                        <input class="basket-box-count" type="text">                                        
+                                        <input class="basket-box-plus" type="submit" value="+">
+                                        <div class="basket-box-total">
+                                            <span class="basket-box-total_count">4000</span>
+                                            <span class="rub">РУБ.</span></div>                                            
+                                    </form>
+                                </div>
+                            </div>
+                            <button class="order_">Заказать</button>
+                            <span id="del-all">Удалить все</span>
+                        </div>
+                    </aside>
+                </div>
+                <div class="search-block">
+                    <form class="search-form" method="get" action="search.html">
+                        <input type="text" class="search-field">
+                        <input type="submit" class="submit" value="Найти">
+                        <label class="description">Наберите текст, например: <u>Артикул детали</u> <i>или</i> <u>задняя фара BMW i3</u></label>
+                    </form>
+                </div>
+            </header>            
+            <!--Конец шапки сайта-->
+            <!--Основной контент-->
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="categerys.html" class="sidebar-menu-item-audi">AUDI</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-bmw">bmw</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-chery">chery</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-chevrolet">chevrolet</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-citroen">citroen</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-daewoo">daewoo</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-fiat" >fiat</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-ford">ford</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-honda" style="">honda</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-hyundai">hyundai</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-kia">kia</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-lexsus">lexus</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-mazda">mazda</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-mersedes">mercedes</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-mitsubishi">mitsubishi</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-nisan">nisan</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-opel">opel</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-peugeot">peugeot</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-renault">renault</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-skoda" style="">skoda</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-toyta" >toyta</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-volkswagen">volkswagen</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-volvo">volvo</a></li>
+                    <li><a href="categerys.html" class="sidebar-menu-item-old">Б/У запчасти для иномарок</a></li>
+                </ul>
+            </nav>
+            <div class="wrap-content">               
+            </div>            
+            <footer>
+                <nav class="header-menu">
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a class="contact-form">Написать нам</a></li>
+                    </ul>
+                </nav>
+            </footer>
+        </section>
+    </body>
+</html>

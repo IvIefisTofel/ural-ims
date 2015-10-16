@@ -1,0 +1,112 @@
+<?
+$this->headLink()->appendStylesheet($this->basePath('admin/css/plugins/datapicker/datepicker.css'));
+$this->headScript()->appendFile($this->basePath('admin/js/plugins/datapicker/bootstrap-datepicker.js'));
+/* @var $page \Pages\Entity\Pages */
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Редактировать страницу</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link" data-toggle="tooltip" data-placement="top" data-original-title="Свернуть">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="close-link" data-toggle="tooltip" data-placement="top" data-original-title="Закрыть">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <form method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <h5>SEO</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="seo_title" class="col-sm-2 control-label">Заголовок</label>
+                        <div class="col-sm-10">
+                            <input id="seo_title" name="seo_title" type="text" class="form-control" value="<?=$seo['seo_title']; ?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="seo_keywords" class="col-sm-2 control-label">Ключевые слова</label>
+                        <div class="col-sm-10">
+                            <input id="seo_keywords" name="seo_keywords" type="text" class="form-control" value="<?=$seo['seo_keywords']?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="seo_description" class="col-sm-2 control-label">Описание</label>
+                        <div class="col-sm-10">
+                            <input id="seo_description" name="seo_description" type="text" class="form-control" value="<?=$seo['seo_description']?>">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <h5>Параметры</h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="alias" class="col-sm-2 control-label">Адрес страницы</label>
+                        <div class="col-sm-10">
+                            <input id="alias" name="alias" type="text" class="form-control" value="<?=$page->getAlias(); ?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Название страницы</label>
+                        <div class="col-sm-10">
+                            <input id="name" name="name" type="text" class="form-control" value="<?=$page->getName(); ?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="content" class="col-sm-2 control-label">Контент страницы</label>
+                        <div class="col-sm-10">
+                            <textarea id="content" name="content" class="form-control" rows="5"><?=$page->getContent(); ?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="form" class="col-sm-2 control-label">Форма</label>
+                        <div class="col-sm-10">
+                            <select id="form" name="form" class="form-control">
+                                <option value=""<?=$page->getFormName() == null ? ' selected="selected"' : '';?>>Нет</option>
+                                <? foreach ($forms as $formAlias => $formName): ?>
+                                    <option value="<?=$formAlias; ?>"<?=$page->getFormName() == $formAlias ? ' selected="selected"' : '';?>><?=$formName; ?></option>
+                                <? endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="active" class="col-sm-10 col-sm-offset-2">
+                            <input id="active" name="active" type="checkbox" class="i-checks" value="1"<?=$page->getActive() == true ? ' checked="checked"' : ''?>>
+                            Активность
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date" class="col-sm-2 control-label">Дата</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-2 input-group date">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date" name="date" type="text" class="form-control" value="<?=date_format($page->getDate(), 'd.m.Y'); ?>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                Сохранить
+                            </button>
+                            <a href="#" class="btn btn btn-default">
+                                <span class="glyphicon glyphicon-arrow-left"></span>
+                                Назад
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

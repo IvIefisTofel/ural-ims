@@ -1,0 +1,81 @@
+#ajaxLoading {
+    display: none;
+}
+#litSettingsGroup tr th:nth-of-type(1){
+    width: 30px;
+}
+#litSettingsGroup tr th:nth-of-type(3){
+    width: 125px;
+}
+#litSettingsGroup tr td{
+    vertical-align: middle;
+}
+#litSettingsGroup tr a, #litSettingsGroup tr button {
+    margin: 0;
+}
+#litSettingsGroup tr td:nth-of-type(2){
+    text-align: center;
+    padding: 0;
+}
+.panel .panel-heading a.close-link {
+    color: white;
+    font-size: 15px;
+}
+.file.error .corner {
+    border-right: 0.6em solid #d84a59;
+    border-bottom: 0.6em solid #d84a59;
+}
+.file.error .icon {
+    background-color: #ed5565;
+}
+.file.error .icon i {
+    font-size: 60px;
+}
+.file.error .icon i,
+.file.error .icon span,
+.file.error .file-name{
+    color: white;
+}
+.file.error .file-name {
+    background-color: #d23d4d;
+    border-top: 1px solid #bb3b48;
+}
+.middle-box h1.logo-name {
+    font-size: 180px;
+    margin-bottom: 30px;
+    cursor: default;
+}
+form#login .checkbox{
+    float: left;
+}
+#LitLSExit {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+}
+#LitLSExit a {
+    color: #999c9e;
+    margin-left: 15px;
+}
+.file-box {
+    position: relative;
+}
+.litControlButtons {
+    position: absolute;
+    right: 25px;
+    top: 5px;
+    z-index: 10;
+}
+.litControlButtons a {
+    position: relative;
+    width: 27px;
+    height: 27px;
+}
+.litControlButtons a i:before {
+    position: absolute;
+    top: 5px;
+    right: 7px;
+}
+.ibox .float-right {
+    text-align: right;
+}

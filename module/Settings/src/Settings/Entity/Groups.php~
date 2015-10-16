@@ -1,0 +1,96 @@
+<?php
+
+namespace Settings\Entity;
+
+use \Doctrine\ORM\Mapping as ORM;
+
+use Zend\Form\Annotation;
+
+/**
+ * Users
+ *
+ * @ORM\Table(name="lit_settings_groups")
+ * @ORM\Entity
+ */
+class Groups
+{
+
+    /**
+     * @var integer
+     *
+     * @ORM\Id
+     * @ORM\Column(name="groupID", type="integer", options={"unsigned":true})
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $groupID;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false, options={"collation":"utf8_general_ci"})
+     */
+    private $name;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="weight", type="integer", nullable=false, options={"unsigned":true})
+     */
+    private $weight;
+
+    /**
+     * Get groupID
+     *
+     * @return int
+     */
+    public function getGroupID()
+    {
+        return $this->groupID;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Settings
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param int $weight
+     * @return Settings
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return int
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+}

@@ -1,95 +1,88 @@
 <?php
-namespace AuthDoctrine;
-
 $env = getenv('APP_ENV') ?: 'production';
 
-return array(
-    'router' => array(
-        'routes' => array(
-            'admin-login' => array(
+return [
+    'router' => [
+        'routes' => [
+            'logout' => [
                 'type'    => 'Segment',
-                'options' => array(
-                    'route'    => '/admin/login[/]',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'AuthDoctrine\Controller',
-                        'controller'    => 'Admin',
-                        'action'        => 'login',
-                    ),
-                ),
-                'may_terminate' => true,
-            ),
-            'logout' => array(
-                'type'    => 'Segment',
-                'options' => array(
+                'options' => [
                     'route'    => '/logout[/]',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'AuthDoctrine\Controller',
                         'controller'    => 'Index',
                         'action'        => 'logout',
-                    ),
-                ),
+                    ],
+                ],
                 'may_terminate' => true,
-            ),
-		),
-	),
+            ],
+            'lock-screen' => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'    => '/lockscreen[/]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'AuthDoctrine\Controller',
+                        'controller'    => 'Admin',
+                        'action'        => 'lockscreen',
+                    ],
+                ],
+                'may_terminate' => true,
+            ],
+		],
+	],
 
-    'controllers' => array(
-        'invokables' => array(
+    'controllers' => [
+        'invokables' => [
             'AuthDoctrine\Controller\Index' => 'AuthDoctrine\Controller\IndexController',
-            'AuthDoctrine\Controller\Registration' => 'AuthDoctrine\Controller\RegistrationController',
             'AuthDoctrine\Controller\Admin' => 'AuthDoctrine\Controller\AdminController',
-        ),
-    ),
+        ],
+    ],
 
-    'view_manager' => array(
+    'view_manager' => [
         'display_not_found_reason' => $env == 'development' ? true : false,
         'display_exceptions'       => $env == 'development' ? true : false,
-        'template_map' => array(
+        'template_map' => [
             'auth/index'           => __DIR__ . '/../view/auth-doctrine/index/index.phtml',
-        ),
-        'template_path_stack' => array(
+        ],
+        'template_path_stack' => [
             __DIR__ . '/../view'
-        ),
-    ),
+        ],
+    ],
 
-    'asset_manager' => array(
-        'resolver_configs' => array(
-            'paths' => array(
-                __DIR__ . '/../public',
-            ),
-        ),
-    ),
+    'asset_manager' => [
+        'resolver_configs' => [
+            'collections' => [
+                'css/login-core.css' => [
+                    'css/bootstrap.min.css',
+                    'css/font-awesome.min.css',
+                    'admin/css/plugins/toastr/toastr.css',
+                    'admin/css/animate.css',
+                    'admin/css/inspinia.css',
+                    'admin/css/style.css',
+                ],
+                'js/login-core.js' => [
+                    'js/jquery.min.js',
+                    'js/bootstrap.min.js',
+                    'admin/js/plugins/toastr/toastr.min.js',
+                ],
+            ],
+        ],
+    ],
 
-    'doctrine' => array(
-        'authentication' => array(
-            'orm_default' => array(
+    'doctrine' => [
+        'authentication' => [
+            'orm_default' => [
                 'object_manager' => 'Doctrine\ORM\EntityManager',
-                'identity_class' => 'AuthDoctrine\Entity\User',
-                'identity_property' => 'usrEmail',
-                'credential_property' => 'usrPassword',
-                'credential_callable' => function(Entity\User $user, $passwordGiven) {
-					if ($user->getUsrPassword() == md5($passwordGiven) && $user->getUsrActive() == 1)
-						return true;
-					else
-						return false;
+                'identity_class' => 'Users\Entity\User',
+                'identity_property' => 'userName',
+                'credential_property' => 'userPassword',
+                'credential_callable' => function(\Users\Entity\User $user, $passwordGiven) {
+                    if ($user->getUserPassword() == md5($passwordGiven) && $user->getUserActive() == 1)
+                        return true;
+                    else
+                        return false;
                 },
-            ),
-        ),
-
-		'driver' => array(
-			__NAMESPACE__ . '_driver' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => array(
-					__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity',
-                ),
-            ),
-
-            'orm_default' => array(
-                'drivers' => array(
-					__NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver',
-                )
-            )
-        )
-    ),
-);
+            ],
+        ],
+    ],
+];

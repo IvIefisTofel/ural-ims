@@ -1,14 +1,10 @@
 <?php
 namespace AuthDoctrine\Controller;
 
-use AuthDoctrine\Entity\User;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 use AuthDoctrine\Form\LoginForm;
-use AuthDoctrine\Form\LoginFilter;
-
-use AuthDoctrine\Acl\Acl;
 
 class AdminController extends AbstractActionController
 {
@@ -19,51 +15,96 @@ class AdminController extends AbstractActionController
 
     public function loginAction()
     {
+        /* @var $user \Users\Entity\User */
         if ($user = $this->identity()) {
-            return $this->redirect()->toRoute('admin');
+            if (isset($_COOKIE['lockScreen'])) {
+                return $this->redirect()->toRoute('lock-screen');
+            } else {
+                return $this->redirect()->toRoute('admin');
+            }
         }
 
-        $form = new LoginForm();
-        $messages = null;
+        $authErrors = [];
+
+        $loginForm = new LoginForm();
+        $loginForm->setAttribute('action', $this->url()->fromRoute('admin-login'));
 
         $request = $this->getRequest();
         if ($request->isPost()) {
-            $form->setInputFilter(new LoginFilter($this->getServiceLocator()));
-            $form->setData($request->getPost());
+            $data = $request->getPost();
 
-            if ($form->isValid()) {
-
-                $data = $form->getData();
+            $loginForm->setData($data);
+            if ($loginForm->isValid()) {
+                $loginForm->getData();
 
                 $authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
                 $adapter = $authService->getAdapter();
-                $adapter->setIdentityValue($data['email']);
-                $adapter->setCredentialValue($data['password']);
+                $adapter->setIdentityValue($data[LoginForm::NAME]);
+                $adapter->setCredentialValue($data[LoginForm::PASSWORD]);
                 $authResult = $authService->authenticate();
 
                 if ($authResult->isValid()) {
                     $identity = $authResult->getIdentity();
                     $authService->getStorage()->write($identity);
-                    $time = 1209600; // 14 days 1209600/3600 = 336 hours => 336/24 = 14 days
-                    if ($data['rememberMe']) {
+                    if ($data[LoginForm::REMEMBER]) {
                         $sessionManager = new \Zend\Session\SessionManager();
+                        $time = 60 * 60 * 24; // 60(seconds)*60(minutes)*24(hours) = 86400 = 1 day
                         $sessionManager->rememberMe($time);
                     }
                     return $this->redirect()->toRoute('admin');
-                }
-                foreach ($authResult->getMessages() as $message) {
-                    $messages .= "$message\n";
+                } else {
+                    $authErrors['auth'] = 'Не верная комбинация email и пароля.';
                 }
             }
         }
 
         $view = new ViewModel(array(
-            'error' => 'Авторизация не проканала.',
-            'form'	=> $form,
-            'messages' => $messages,
+            'authErrors' => $authErrors,
+            'loginForm'	=> $loginForm,
         ));
         $view->setTerminal(true);
 
         return $view;
 	}
+
+    public function lockScreenAction()
+    {
+        /* @var $user \Users\Entity\User */
+        if ($user = $this->identity()) {
+            setcookie('lockScreen', 'true', time() + 60*60*24, '/', $this->getRequest()->getUri()->getHost());
+        } else {
+            return $this->redirect()->toRoute('admin-login');
+        }
+
+        $uri = $this->params()->fromQuery('uri');
+        if ($uri == 'tosite') {
+            return $this->redirect()->toRoute('home');
+        }
+
+        $error = false;
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $data = $request->getPost();
+
+            if ($user->getUserPassword() == md5($data['lockScreenPass'])) {
+                setcookie('lockScreen', '', -3600, '/', $this->getRequest()->getUri()->getHost());
+                if ($data['lockScreenRedirect'] != null) {
+                    return $this->redirect()->toUrl($data['lockScreenRedirect']);
+                } else {
+                    return $this->redirect()->toRoute('admin');
+                }
+            } else {
+                $error = true;
+            }
+        }
+
+        $view = new ViewModel(array(
+            'error' => $error,
+            'uri' => $uri,
+        ));
+        $view->setTerminal(true);
+
+        return $view;
+    }
 }

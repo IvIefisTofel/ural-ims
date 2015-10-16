@@ -8,7 +8,7 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-		return new ViewModel();
+		return $this->redirect()->toRoute('logout');
     }
 	
 	public function logoutAction()
@@ -18,14 +18,8 @@ class IndexController extends AbstractActionController
 
 		$sessionManager = new \Zend\Session\SessionManager();
 		$sessionManager->forgetMe();
+        setcookie('lockScreen', '', -3600, '/', $this->getRequest()->getUri()->getHost());
 		
 		return $this->redirect()->toRoute('home');
 	}
-
-    public function accessdeniedAction()
-    {
-        $view = new ViewModel();
-        $view->setTemplate('error/404');
-        return $view;
-    }
 }
