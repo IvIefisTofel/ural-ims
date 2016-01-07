@@ -1,4 +1,7 @@
 <?php
+
+namespace Files;
+
 return [
     'router' => [
         'routes' => [
@@ -20,7 +23,7 @@ return [
 
     'controllers' => [
         'invokables' => [
-            'Files\Controller\Index' => 'Files\Controller\IndexController'
+            'Files\Controller\Index' => Controller\IndexController::class,
         ],
     ],
 ];

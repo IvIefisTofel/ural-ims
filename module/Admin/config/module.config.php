@@ -1,6 +1,8 @@
 <?php
-$env = getenv('APP_ENV') ?: 'production';
 
+namespace Admin;
+
+$env = (getenv('APP_ENV') == 'development') ? true : false;
 return [
     'router' => [
         'routes' => [
@@ -64,12 +66,12 @@ return [
 
     'controllers' => [
         'invokables' => [
-            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
-            'Admin\Controller\Settings' => 'Admin\Controller\SettingsController',
-            'Admin\Controller\Files' => 'Admin\Controller\FilesController',
-            'Admin\Controller\Pages' => 'Admin\Controller\PagesController',
-            'Admin\Controller\Forms' => 'Admin\Controller\FormsController',
-            'Admin\Controller\Users' => 'Admin\Controller\UsersController',
+            'Admin\Controller\Index'    => Controller\IndexController::class,
+            'Admin\Controller\Settings' => Controller\SettingsController::class,
+            'Admin\Controller\Files'    => Controller\FilesController::class,
+            'Admin\Controller\Pages'    => Controller\PagesController::class,
+            'Admin\Controller\Forms'    => Controller\FormsController::class,
+            'Admin\Controller\Users'    => Controller\UsersController::class,
         ],
     ],
 
@@ -81,8 +83,8 @@ return [
     ],
 
     'view_manager' => [
-        'display_not_found_reason' => $env == 'development' ? true : false,
-        'display_exceptions'       => $env == 'development' ? true : false,
+        'display_not_found_reason' => $env,
+        'display_exceptions'       => $env,
         'doctype'                  => 'HTML5',
         'template_map' => [
             'layout/admin'                  => __DIR__ . '/../view/layout/layout.phtml',
@@ -134,7 +136,7 @@ return [
                 __DIR__ . '/../public',
             ],
         ],
-        'filters' => $env == 'development' ? [] : [
+        'filters' => $env ? [] : [
             'admin/css/plugins/toastr/toastr.css' => [['filter' => 'CssMinFilter']],
             'admin/css/plugins/gritter/jquery.gritter.css' => [['filter' => 'CssMinFilter']],
             'admin/css/plugins/iCheck/custom.css' => [['filter' => 'CssMinFilter']],
@@ -142,7 +144,7 @@ return [
             'admin/css/inspinia.css' => [['filter' => 'CssMinFilter']],
             'admin/css/style.css' => [['filter' => 'CssMinFilter']],
         ],
-        'caching' => $env == 'development' ? [] : [
+        'caching' => $env ? [] : [
             'css/core.css' => [
                 'cache'     => 'FilesystemCache',
                 'options' => [

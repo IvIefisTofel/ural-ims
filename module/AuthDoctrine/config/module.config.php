@@ -1,6 +1,8 @@
 <?php
-$env = getenv('APP_ENV') ?: 'production';
 
+namespace AuthDoctrine;
+
+$env = (getenv('APP_ENV') == 'development') ? true : false;
 return [
     'router' => [
         'routes' => [
@@ -33,14 +35,14 @@ return [
 
     'controllers' => [
         'invokables' => [
-            'AuthDoctrine\Controller\Index' => 'AuthDoctrine\Controller\IndexController',
-            'AuthDoctrine\Controller\Admin' => 'AuthDoctrine\Controller\AdminController',
+            'AuthDoctrine\Controller\Index' => Controller\IndexController::class,
+            'AuthDoctrine\Controller\Admin' => Controller\AdminController::class,
         ],
     ],
 
     'view_manager' => [
-        'display_not_found_reason' => $env == 'development' ? true : false,
-        'display_exceptions'       => $env == 'development' ? true : false,
+        'display_not_found_reason' => $env,
+        'display_exceptions'       => $env,
         'template_map' => [
             'auth/index'           => __DIR__ . '/../view/auth-doctrine/index/index.phtml',
         ],

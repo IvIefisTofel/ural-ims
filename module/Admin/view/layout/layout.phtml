@@ -1,7 +1,7 @@
 <?
 /* @var $user \Users\Entity\User */
 $user = $this->identity();
-$env = getenv('APP_ENV') ?: 'production';
+$env = (getenv('APP_ENV') == 'development') ? true : false;
 ?>
 <?=$this->doctype(); ?>
 <html lang="ru">
@@ -11,7 +11,7 @@ $env = getenv('APP_ENV') ?: 'production';
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <? if ($env == 'development') {
+    <? if ($env) {
         $this->headLink()
             ->prependStylesheet($this->basePath('admin/css/style.css'))
             ->prependStylesheet($this->basePath('admin/css/inspinia.css'))
@@ -196,7 +196,7 @@ $env = getenv('APP_ENV') ?: 'production';
     ->prependFile($this->basePath('admin/js/plugins/idle-timer/idle-timer.min.js'));
 endif; ?>
 
-<? if ($env == 'development') {
+<? if ($env) {
     $this->headScript()
         // Custom and plugin javascript
         ->prependFile($this->basePath('admin/js/inspinia.js'))

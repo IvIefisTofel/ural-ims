@@ -1,15 +1,10 @@
-<?
-$homepage = ($this->basePath('/') == $_SERVER['REQUEST_URI']);
-
-//var_dump($action, $controller, $module, $module_array);
-//exit;
-?>
+<? $homepage = ($this->basePath('/') == $_SERVER['REQUEST_URI']); ?>
 
 <?=$this->doctype(); ?>
 <html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <?=$this->headTitle('ООО "ИМС"')->setSeparator(' | ')->setAutoEscape(false) ?>
+    <?=$this->headTitle($this->getSiteParam('main_title'))->setSeparator(' | ')->setAutoEscape(false) ?>
 
     <?=$this->headMeta()
         ->appendName('viewport', 'width=device-width, initial-scale=1.0')

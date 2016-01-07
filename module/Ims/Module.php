@@ -25,9 +25,10 @@ class Module
     {
         return array(
             'invokables' => array(
-                'numEnding' => 'Lit\View\Helper\NumEnding',
-                'setCurrentNavigationPage' => 'Lit\View\Helper\SetCurrentNavigationPage',
-                'addCurrentBreadCrumb' => 'Lit\View\Helper\AddCurrentBreadCrumb',
+                'getSiteParam' => View\Helper\GetSiteParam::class,
+                'numEnding' => View\Helper\NumEnding::class,
+                'setCurrentNavigationPage' => View\Helper\SetCurrentNavigationPage::class,
+                'addCurrentBreadCrumb' => View\Helper\AddCurrentBreadCrumb::class,
             ),
         );
     }

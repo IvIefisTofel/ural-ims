@@ -1,5 +1,5 @@
 <?php
-namespace Lit\View\Helper;
+namespace Ims\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 
