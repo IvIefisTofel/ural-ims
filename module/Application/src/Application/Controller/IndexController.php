@@ -11,4 +11,19 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function machiningAction()
+    {
+        return new ViewModel();
+    }
+
+    public function plasticAction()
+    {
+        return new ViewModel();
+    }
+
+    public function contactsAction()
+    {
+        return new ViewModel();
+    }
 }

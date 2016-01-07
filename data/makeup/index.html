@@ -1,184 +1,274 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style/style.css" type="text/css">
-        <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
-        <script type="text/javascript" src="js/action.js"></script>
-    </head>
-    <body>
-        <div class="lightbox-contact-form">
-            <button class="contact-form-close">✖</button>
-            <div class="wrap-form">
-                <form class="contact-form-wrap">                    
-                    <input type="text" class="contact-form-first-name input-name" placeholder="Имя" required><br>                    
-                    <input type="text" class="contact-form-first-name input-name" placeholder="Фамилия" required><br>                                       
-                    <input type="text" class="contact-form-telephone input-name" placeholder="Телефон" required><br> 
-                    <textarea class="contact-form-textarea" placeholder="Текст сообщение" required></textarea><br>
-                    <input type="submit" class="contact-form-submit">
-                </form>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="img/ico/favicon.png">
+
+    <title>ООО "ИМС"</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <script>
+        paceOptions = {
+            elements: true
+        };
+    </script>
+    <script src="js/pace.min.js"></script>
+    <style type="text/css"></style>
+</head>
+<body id="home">
+<div id="wrapper">
+    <div id="header" class="header">
+        <nav class="navbar navbar-site navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="row contacts">
+                    <div class="col-sm-3 col-sm-offset-6">
+                        <a class="pull-right" href="tel:+000000000">Телефон: (000) 000-0000</a>
+                    </div>
+                    <div class="col-sm-3">
+                        <a class="pull-right" href="mailto:ims.ltd.comp@gmail.com">Email: ims.ltd.comp@gmail.com</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="navbar-brand">
+                            <i class="fa fa-fort-awesome"></i> <span>ООО</span> "ИМС"
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="/" scroll="home">Главная</a></li>
+                            <li><a href="#" scroll="about-us">О нас</a></li>
+                            <li><a href="/machining.html" scroll="machining">Механообработка</a></li>
+                            <li><a href="/plastic.html" scroll="plastic">Литье пластмасс</a></li>
+                            <li><a href="/contacts.html">Контакты</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="intro" class="intro">
+        <div class="container">
+            <div id="slider1_container" class="slider-container">
+                <div u="loading" class="slider-loading"><div></div><div></div></div>
+
+                <!-- Slides Container -->
+                <div u="slides" class="slides-content">
+                    <div>
+                        <img u="image" src2="img/slider/home/01.jpg" />
+                        <div data-u="caption" data-t="0" class="slides-text-area">
+                            <div data-u="caption" data-t="1" class="slides-text slides-text-tl">Touch swipe and responsive javascript image slider</div>
+                            <div data-u="caption" data-t="2" class="slides-text slides-text-br">slideshow and responsive slider ...</div>
+                        </div>
+                    </div>
+                    <div>
+                        <img u="image" src="img/slider/home/02.jpg"/>
+                    </div>
+                    <div>
+                        <img u="image" src="img/slider/home/03.jpg"/>
+                    </div>
+                    <div>
+                        <img u="image" src="img/slider/home/04.jpg"/>
+                    </div>
+                </div>
+
+                <div u="navigator" class="jssorb05">
+                    <div u="prototype"></div>
+                </div>
+
+                <span u="arrowleft" class="jssora11l"></span>
+                <span u="arrowright" class="jssora11r"></span>
             </div>
         </div>
-        <section class="wrap">            
-            <header>
-                <nav class="main-menu">
-                    <ul>
-                        <li><a class="active-link-header" href="index.html">Главная</a></li>                       
-                        <li><a href="catalog.html">Каталог</a></li>
-                        <li><a href="news.html">Новости</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
-                        <li><a class="contact-form">Написать нам</a></li>
-                    </ul>
-                </nav>
-                <div class="section">
-                    <a class="logo" href="index.html"></a>
-                    <aside class="basket">
-                        <span class="name-basket-part">У вас в корзине: <strong>2</strong> детали</span>
-                        <span class="name-basket-part">На сумму <strong>8000</strong> руб.</span> 
-                        <div>
-                            <button class="order-">Заказать</button>
-                            <a class="more">Подробнее</a>
-                        </div>
-                        <div class="basket-box">
-                            <div class="basket-box-hr-dotted">
-                                <a class="basket-box-del"></a>
-                                <img class="preview" src="img/catalog/parts/show_image_in_imgtag.jpg" alt="">
-                                <div class="basket-box-discirption">
-                                    <h5 class="basket-box-title">Задняя фара BMW i3</h5>
-                                    <form>
-                                        <input class="basket-box-minus" type="submit" value="-">
-                                        <input class="basket-box-count" type="text">                                        
-                                        <input class="basket-box-plus" type="submit" value="+">
-                                        <div class="basket-box-total">
-                                            <span class="basket-box-total_count">4000</span>
-                                            <span class="rub">РУБ.</span></div>                                            
-                                    </form>
+    </div>
+
+    <div class="main-container">
+        <div class="container">
+            <div class="row">
+                <div id="about-us" class="col-sm-12">
+                    <div class="blog-post-wrapper">
+                        <article class="blog-post-item">
+                            <div class="inner-box">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="blog-post-header">
+                                            <h2>О нас</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="blog-post-content">
+                                        <p>Наша компания уже на протяжении 2х лет работает на рынке изготовления пресс-форм и литья пластмасс под давлением.
+                                            За это время мы успели зарекомендовать себя как надежный партнер многих предприятий города и республики.</p>
+                                        <p>Скорость изготовления и качество выпускаемой продукции – два основополагающих принципа работы нашей компании.
+                                            Команда специалистов, обладающих большим опытом конструирования, проектирования и производства изделий из металлов и пластмасс – залог успеха предприятия.</p>
+                                        <p>ООО ИМС является производственной организацией полного цикла: мы ведем проекты от разработки КД до изготовления конечного продукта.
+                                            Совершенствуясь каждый день, мы растем в глазах своих заказчиков и партнеров</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="basket-box-hr-last-box">
-                                 <a class="basket-box-del"></a>
-                                <img class="preview" src="img/catalog/parts/show_image_in_imgtag.jpg" alt="">
-                                <div class="basket-box-discirption">
-                                    <h5 class="basket-box-title">Передняя фара BMW i3</h5>
-                                    <form>
-                                        <input class="basket-box-minus" type="submit" value="-">
-                                        <input class="basket-box-count" type="text">                                        
-                                        <input class="basket-box-plus" type="submit" value="+">
-                                        <div class="basket-box-total">
-                                            <span class="basket-box-total_count">4000</span>
-                                            <span class="rub">РУБ.</span></div>                                            
-                                    </form>
+                        </article>
+                    </div>
+                </div>
+                <div id="machining" class="col-sm-12">
+                    <div class="blog-post-wrapper">
+                        <article class="blog-post-item">
+                            <div class="inner-box">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="blog-post-header">
+                                            <h2>Механообработка</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="blog-post-img">
+                                            <img class="img-responsive" alt="blog-post image" src="img/blog-1.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="blog-post-content">
+                                        <p>Изделия из металла широко используются как в быту, так и во всех сферах промышленного производства, машиностроения.</p>
+                                        <p>При изготовлении деталей используется множество высокоточных станков, обслуживаемых профессиональными операторами.
+                                            От качества обработки изделия зависит работа всего механизма, поэтому стоит обращаться только в компании,
+                                            обладающие самым современным оборудованием и лучшими кадрами. Нами осуществляется качественная металлообработка на
+                                            заказ, по самым приемлемым ценам.</p><br>
+                                        <p><b>Пресс-форма</b> – это дорогой и сложный инструмент для изготовления изделий из пластмасс литьём под давлением.
+                                            Сотрудники нашей компании обладают огромным опытом в области изготовления и проектирования технологической оснастки
+                                            для литья изделий из пластмасс.</p>
+                                        <p>Наша компания конструирует, изготавливает пресс-формы для литья изделий из пластмасс, специализируясь на производстве
+                                            пресс-форм для мелкосерийного литья. Для этого требуется оперативная работа, опыт и квалификация персонала,
+                                            способного не только конструировать, но и создавать пресс-формы любой сложности в короткие сроки. И именно в ООО «ИМС»
+                                            все эти составляющие успешного производства изделий из пластмассы сошлись воедино, благодаря чему наша компания
+                                            предлагает вам изготовление пресс-форм за 15-40 дней.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="blog-post-bottom">
+                                            <div class="blog-post-time">05.01.2016</div>
+                                            <a id="test" class="btn btn-primary  pull-right" href="/machining.html">Больше информации</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <button class="order_">Заказать</button>
-                            <span id="del-all">Удалить все</span>
-                        </div>
-                    </aside>
+                        </article>
+                    </div>
                 </div>
-                <div class="search-block">
-                    <form class="search-form" method="get" action="search.html">
-                        <input type="text" class="search-field">
-                        <input type="submit" class="submit" value="Найти">
-                        <label class="description">Наберите текст, например: <u>Артикул детали</u> <i>или</i> <u>задняя фара BMW i3</u></label>
-                    </form>
-                </div>
-            </header>            
-            <!--Конец шапки сайта-->
-            <!--Основной контент-->
-            <nav class="sidebar-menu">
-                <ul>
-                    <li><a href="categerys.html" class="sidebar-menu-item-audi">AUDI</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-bmw">bmw</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-chery">chery</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-chevrolet">chevrolet</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-citroen">citroen</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-daewoo">daewoo</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-fiat" >fiat</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-ford">ford</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-honda" style="">honda</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-hyundai">hyundai</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-kia">kia</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-lexsus">lexus</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-mazda">mazda</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-mersedes">mercedes</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-mitsubishi">mitsubishi</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-nisan">nisan</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-opel">opel</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-peugeot">peugeot</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-renault">renault</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-skoda" style="">skoda</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-toyta" >toyta</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-volkswagen">volkswagen</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-volvo">volvo</a></li>
-                    <li><a href="categerys.html" class="sidebar-menu-item-old">Б/У запчасти для иномарок</a></li>
-                </ul>
-            </nav>
-            <div class="wrap-content">
-                <h4>Запчасти для иномарок в Саратове</h4>
-                <span>
-                    В продаже появились оригинальные  б/у запчасти, детали кузова по низким ценам, смешные цены на двери, крыши, крылья, крышки багажников, авто-стекло... 
-Более 100 000 деталей кузова на центральном складе, срок исполнения 1-3 дня.
- 
-Мы занимаемся деталями подвески, наивысшего качества: Амортизаторы(Kayaba,SACHS,Bilstein,Boge), Рычаги(Lemforder, Lucas (TRW) Lemforder), шаровые, наконечники, стойки стабилизатора, и др.(Moog, Lemforder, Lucas\TRW, 555, CTR)
- 
-Так же, у нас вы можете приобрести, запчасти для ТО: Свечи, Фильтра, Ремни, Ролики, Тормозные колодки и диски и тд. 
- 
-Необходимые Вам автозапчасти для иномарок, которые не указаны в списке, вы тоже можете приобрести под заказ.
-                </span>
-                <div class="wrap-content-text-action">                    
-                    <span>Внимание! Участникам нашей группы BКонтакте предоставляется дополнительная скидка в 5%!</span>
-                    <button class="order" style="margin-top: 10px;">Добавиться</button>
-                </div>
-                <div>
-                    <h4>Интернет-магазин www.vin64.ru это:</h4>
-                    
-                    <ul>
-                        <li><span><strong>Удобный поиск необходимой запчасти</strong>.<br> Мы постарались расположить товары наиболее удобным образом, чтобы упростить поиск необходимой вам детали</span></li>
-                        <li><span><strong>Отсутствие регистрации</strong>. <br>Для того чтобы сделать заказ Вам необходимо ввести только Ф.И.О. и контактный телефон
-наличие всех товаров</span></li>
-                        <li><span><strong>Любую деталь вы можете приобрести под заказ в кратчайшие сроки</strong></span></li>
-                        <li><span><strong>Сотрудничество с ведущими производителями</strong>. <br>Мы сотрудничаем с ведущими поставщиками запчастей для иномарок, тем самым мы позволяем себе снижать цены на все запчасти</span></li>
-                        <li><span><strong>Консультация покупателя</strong>.<br> Наши менеджеры свяжутся с вами и уточнят точные данные о вашем заказе, а также могут проконсультировать о более выгодной покупке запчасти для вашего автомобиля</span></li>
-                        <li><span><strong>Низкие цены на запчасти</strong>. <br>Мы стараемся сохранять самые низкие цены на качественные запчасти</span></li>
-                        <li><span><strong>Удобное расположение магазина</strong>.<br> Перейти в раздел <a href="contacts.html">контакты</a></span></li>                       
-                    </ul>
-                </div>
-                <div>
-                    <h4>Мы предоставляем самые низкие цены на широкий ассортимент товара.</h4>
-                    У нас Вы сможете найти:
-                    Автозапчасти для иномарок в саратовекузовные детали: крылья, капоты, суппорты радиаторов,передние и задние бамперы, молдинги кузова, подкрылки, защиты поддона, решетки бамперов и радиаторов, панели багажника.
- 
-оптические элементы: фонари задние внешние и внутренние, противотуманные фары, фары передние с корректором и без, указатели поворотов и боковые зеркала с подогоревом и без, автоматические и механические
- 
-детали систем охлаждения, отопления и кондиционирования: радиаторы охлаждения, радиаторы кондиционера, компрессоры кондиционера, испарители и радиаторы отопителей и многое другое для вашего автомобиля.
- 
-Наш интернет-магазин предлагает к Вашему выбору только качественные детали от ведущих производителей мира. Каждая деталь представлена в нескольких видах: оригинальная и аналоговая, поэтому у Вас всегда будет из чего выбрать. Также у нас в наличии Вы всегда сможете найти запчасти для ТО, а наши грамотные специалисты смогут предоставить всю нужную информацию по каждой детали и в случае каких-либо затруднений прийти к вам на помощь.
- 
-Интернет-магазин www.vin64.ru - это отличный выбор для оптовых и розничных покупателей, которым нужны качественные запчасти для иномарок по низким ценам. Мы предоставляем большие скидки постоянным клиентам, поэтому мы рассчитываем на долгое и взаимовыгодное сотрудничество с каждым нашим покупателем.
- 
- 
-Процедура заказа очень проста, но на всякий случай посетите раздел "Заказ" за подробными советами. Также всегда вашими помощниками станут наши менеджеры и вспомогательный ролик в нижней части страницы.
+                <div id="plastic" class="col-sm-12">
+                    <div class="blog-post-wrapper">
+                        <article class="blog-post-item">
+                            <div class="inner-box">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="blog-post-header">
+                                            <h2>Литье пластмасс под давлением</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="blog-post-img">
+                                            <img class="img-responsive" alt="blog-post image" src="img/blog-1.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="blog-post-content">
+                                        <p><b>Литье пластмасс под давлением</b> - это процесс переработки (преобразования)
+                                            пластмасс из исходного состояния в виде гранул в жидкое под воздействием температуры
+                                            и последующий впрыск расплавленной пластмассы в пресс-форму.</p>
+                                        <p>Используя метод "литье пластмасс под давлением" в мире в настоящее время производится до трети единичных пластмассовых изделий.</p>
+                                        <p>Для литья пластмасс используем практически любой материал по выбору заказчика.</p>
+                                        <div class="col-sm-6">
+                                            <h4>Почему Вам нужно мелкосерийное литье пластмасс</h4>
+                                            <p>Десять причин для выбора метода "литье пластмасс под давлением":</p>
+                                            <ol style="list-style-type: decimal;">
+                                                <li>Любой цвет. Цвет может быть на полупрозрачной основе.</li>
+                                                <li>Поверхность. Высокий блеск и устойчивость против царапин.</li>
+                                                <li>Морозостойкость до -57 градусов Цельсия.</li>
+                                                <li>Возможность применения в пищевых и медицинских отраслях.</li>
+                                                <li>Высокие ударопрочность и жесткость.</li>
+                                                <li>Высокая эластичность.</li>
+                                                <li>Устойчивость к побелению под нагрузкой, деформации.</li>
+                                                <li>Стойкость к воздействию химических веществ и УФ-излучения.</li>
+                                                <li>Хорошие органолептические свойства, обеспечение герметичности.</li>
+                                                <li>Красивый внешний вид.</li>
+                                            </ol><br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="blog-post-bottom">
+                                            <div class="blog-post-time">05.01.2016</div>
+                                            <a class="btn btn-primary  pull-right" href="/plastic.html">Больше информации</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
-            
-            <footer>
-                <nav class="header-menu">
-                    <ul>
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="catalog.html">Каталог</a></li>
-                        <li><a href="news.html">Новости</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
-                        <li><a class="contact-form">Написать нам</a></li>
-                    </ul>
-                </nav>
-            </footer>
-        </section>        
-    </body>
+        </div>
+    </div>
+
+    <div class="page-bottom-info">
+        <div class="page-bottom-info-inner">
+            <div class="page-bottom-info-content text-center">
+                <h1>Если у вас есть какие-либо вопросы, пожалуйста, позвоните нам (000) 555-5555</h1>
+                <a class="btn  btn-lg btn-primary-dark" href="tel:+000000000">
+                    <i class="icon-mobile"></i> <span class="hide-xs color50">Позвонить сейчас:</span> (000) 555-5555 </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+        <div class="container">
+            <!--<nav class="navbar-default">-->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/" scroll="home">Главная</a></li>
+                    <li><a href="#" scroll="about-us">О нас</a></li>
+                    <li><a href="/machining.html" scroll="machining">Механообработка</a></li>
+                    <li><a href="/plastic.html" scroll="plastic">Литье пластмасс</a></li>
+                    <li><a href="/contacts.html">Контакты</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><div class="copyright">© 2015 ООО "ИМС"</div></li>
+                </ul>
+            <!--</nav>-->
+        </div>
+    </div>
+
+</div>
+
+
+<script src="js/jquery.min.js"> </script>
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/jssor.slider.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
 </html>

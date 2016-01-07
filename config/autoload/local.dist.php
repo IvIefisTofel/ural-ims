@@ -9,7 +9,7 @@ return [
                     'port'     => '',                                       // Default '3306'
                     'user'     => '',                                       // Default 'root'
                     'password' => '',                                       // Default ''
-                    'dbname'   => '',                                       // Default 'lit_db'
+                    'dbname'   => '',                                       // Default 'ural_ims'
                     'charset'  => 'utf8',
                     'driverOptions' => [
                         1002 => 'SET NAMES utf8 COLLATE utf8_general_ci'

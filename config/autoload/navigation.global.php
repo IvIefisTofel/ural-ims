@@ -17,23 +17,28 @@ return [
         'default' => [
             [
                 'label' => 'Главная',
+                'scroll' => 'home',
                 'route' => 'home',
             ],
             [
-                'label' => 'Каталог',
-                'route' => 'catalog',
+                'label' => 'О нас',
+                'scroll' => 'about-us',
+                'uri' => '/#',
+                'skip' => true,
             ],
             [
-                'label' => 'Новости',
-                'uri' => '#',
+                'label' => 'Механообработка',
+                'scroll' => 'machining',
+                'route' => 'machining',
+            ],
+            [
+                'label' => 'Литье пластмасс',
+                'scroll' => 'plastic',
+                'route' => 'plastic',
             ],
             [
                 'label' => 'Контакты',
-                'uri' => '#',
-            ],
-            [
-                'label' => 'Написать нам',
-                'uri' => '#',
+                'route' => 'contacts',
             ],
         ],
         'admin-panel'   => [

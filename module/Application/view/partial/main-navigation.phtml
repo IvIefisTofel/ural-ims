@@ -1,17 +1,22 @@
 <?
 /* @var $container Zend\Navigation\Navigation */
 $container = $this->container;
+
+$homepage = ($this->basePath('/') == $_SERVER['REQUEST_URI']);
 ?>
 <ul class="<?=$this->navigation($container)->menu()->getUlClass(); ?>">
     <? foreach ($container as $page): ?>
         <? if (!$this->navigation()->accept($page)) continue; ?>
-        <? /* @var $page Zend\Navigation\Page\Mvc */ ?>
-            <li>
+            <? /* @var $page Zend\Navigation\Page\Mvc */ ?>
+            <? if (!$homepage && $page->get('skip') == true) continue; ?>
+            <li<? if ($page->isActive()) echo ' class="active"' ?> >
                 <a
-                    <? if ($page->isActive()) echo ' class="active-link-header"' ?> 
                     href="<?=$page->getHref() ?>"
                     <? if ($page->getTarget() != ""): ?>
                         target="<?=$page->getTarget(); ?>"
+                    <? endif; ?>
+                    <? if ($page->get('scroll') != null): ?>
+                        scroll="<?=$page->get('scroll'); ?>"
                     <? endif; ?>
                     >
                     <?=$this->escapeHtml($page->getLabel()); ?>

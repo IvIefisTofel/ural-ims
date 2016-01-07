@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pages
  *
- * @ORM\Table(name="lit_pages")
+ * @ORM\Table(name="ims_pages")
  * @ORM\Entity
  */
 class Pages

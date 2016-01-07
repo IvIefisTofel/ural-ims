@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Settings
  *
- * @ORM\Table(name="lit_settings")
+ * @ORM\Table(name="ims_settings")
  * @ORM\Entity
  */
 class Settings

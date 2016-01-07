@@ -1,5 +1,10 @@
-<h1><?php echo $this->translate('A 404 error occurred') ?></h1>
+<? $this->headTitle('Страница не найдена');  ?>
+<div class="error-404"></div>
+<a href="<?=$this->url('home'); ?>" class="btn btn-primary btn-404">На главную</a>
+<?/*
+<h1>Ошибка 404</h1>
 <h2>Страница не найдена.</h2>
+*/?>
 
 <?php if (isset($this->reason) && $this->reason): ?>
 
@@ -68,6 +73,7 @@ if (isset($this->controller_class)
 </dl>
 <?php
     $e = $this->exception->getPrevious();
+    $icount = 0;
     if ($e) :
 ?>
 <hr/>
@@ -93,6 +99,11 @@ if (isset($this->controller_class)
     </li>
     <?php
         $e = $e->getPrevious();
+        $icount += 1;
+        if ($icount >=50) {
+            echo "<li>There may be more exceptions, but we have no enough memory to proccess it.</li>";
+            break;
+        }
         endwhile;
     ?>
 </ul>

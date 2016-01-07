@@ -1,91 +1,123 @@
 <?php
-$env = getenv('APP_ENV') ?: 'production';
 
-return array(
-    'router' => array(
-        'routes' => array(
-            'home' => array(
+namespace Application;
+
+$env = (getenv('APP_ENV') == 'development') ? true : false;
+return [
+    'router' => [
+        'routes' => [
+            'home' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route'    => '/',
-                    'defaults' => array(
+                    'defaults' => [
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
-                    ),
-                ),
-            ),
-            'application' => array(
+                    ],
+                ],
+            ],
+            'machining' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route'    => '/machining',
+                    'defaults' => [
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'machining',
+                    ],
+                ],
+            ],
+            'plastic' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route'    => '/plastic',
+                    'defaults' => [
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'plastic',
+                    ],
+                ],
+            ],
+            'contacts' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route'    => '/contacts',
+                    'defaults' => [
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'contacts',
+                    ],
+                ],
+            ],
+            'application' => [
                 'type'    => 'Literal',
-                'options' => array(
+                'options' => [
                     'route'    => '/app',
-                    'defaults' => array(
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
                         'action'        => 'index',
-                    ),
-                ),
+                    ],
+                ],
                 'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
+                'child_routes' => [
+                    'default' => [
                         'type'    => 'Segment',
-                        'options' => array(
+                        'options' => [
                             'route'    => '/[:controller[/:action]]',
-                            'constraints' => array(
+                            'constraints' => [
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-    'service_manager' => array(
-        'abstract_factories' => array(
+                            ],
+                            'defaults' => [
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'service_manager' => [
+        'abstract_factories' => [
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
-        ),
-        'aliases' => array(
+        ],
+        'aliases' => [
             'translator' => 'MvcTranslator',
-        ),
-    ),
-    'translator' => array(
+        ],
+    ],
+    'translator' => [
         'locale' => 'ru_RU',
-        'translation_file_patterns' => array(
-            array(
+        'translation_file_patterns' => [
+            [
                 'type'     => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern'  => '%s.mo',
-            ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
-        ),
-    ),
-    'view_manager' => array(
-        'display_not_found_reason' => $env == 'development' ? true : false,
-        'display_exceptions'       => $env == 'development' ? true : false,
+            ],
+        ],
+    ],
+    'controllers' => [
+        'invokables' => [
+            'Application\Controller\Index' => Controller\IndexController::class
+        ],
+    ],
+    'view_manager' => [
+        'display_not_found_reason' => $env,
+        'display_exceptions'       => $env,
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => array(
+        'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
-        ),
-        'template_path_stack' => array(
+        ],
+        'template_path_stack' => [
             __DIR__ . '/../view',
-        ),
+        ],
         'strategies' => [
             'ViewJsonStrategy',
         ],
-    ),
+    ],
 
-    'doctrine_factories' => array(
+    'doctrine_factories' => [
         'entitymanager' => 'Common\Service\EntityManagerFactory',
-    ),
-);
+    ],
+];

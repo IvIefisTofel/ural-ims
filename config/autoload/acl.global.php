@@ -45,9 +45,6 @@ return [
                 'Application\Controller\Index' => [
                     User::GUEST_ROLE,
                 ],
-                'Tecdoc\Controller\Index' => [
-                    User::GUEST_ROLE,
-                ],
                 'Files\Controller\Index' => [
                     User::GUEST_ROLE,
                 ],

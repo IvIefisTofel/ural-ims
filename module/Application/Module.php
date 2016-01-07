@@ -29,6 +29,8 @@ class Module
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
+        $moduleRouteListener = new ModuleRouteListener();
+        $moduleRouteListener->attach($eventManager);
 
         $repository = $e->getApplication()->getServiceManager()->get('Doctrine\ORM\EntityManager')->getRepository('Settings\Entity\Settings');
         $lockscreenEnabled = $repository->findOneByName('lockscreen_enabled');
@@ -41,8 +43,6 @@ class Module
             }
         }
 
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($eventManager);
         $eventManager->attach('route', array($this, 'onRoute'), -100);
 
 

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Fields
  *
- * @ORM\Table(name="lit_fields", uniqueConstraints={@ORM\UniqueConstraint(name="alias", columns={"alias"})})
+ * @ORM\Table(name="ims_fields", uniqueConstraints={@ORM\UniqueConstraint(name="alias", columns={"alias"})})
  * @ORM\Entity
  */
 class Fields

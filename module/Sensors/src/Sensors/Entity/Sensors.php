@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Sensors
  *
- * @ORM\Table(name="lit_sensors")
+ * @ORM\Table(name="ims_sensors")
  * @ORM\Entity
  */
 class Sensors

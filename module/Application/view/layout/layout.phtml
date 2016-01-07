@@ -1,8 +1,15 @@
+<?
+$homepage = ($this->basePath('/') == $_SERVER['REQUEST_URI']);
+
+//var_dump($action, $controller, $module, $module_array);
+//exit;
+?>
+
 <?=$this->doctype(); ?>
 <html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <?=$this->headTitle('Запчасти для иномарок в Саратове')->setSeparator(' | ')->setAutoEscape(false) ?>
+    <?=$this->headTitle('ООО "ИМС"')->setSeparator(' | ')->setAutoEscape(false) ?>
 
     <?=$this->headMeta()
         ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -10,112 +17,132 @@
     ?>
 
     <!-- Le styles -->
-    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.png'))
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath('img/favicon.png')))
+        ->appendStylesheet($this->basePath('css/bootstrap.min.css'))
         ->appendStylesheet($this->basePath('css/font-awesome.min.css'))
         ->appendStylesheet($this->basePath('css/style.css'))
-        ->appendStylesheet($this->basePath('css/forms.css'))
     ?>
 
     <!--[if lt IE 9]>
     <script src="<?=$this->basePath('js/html5shiv.js'); ?>"></script>
     <script src="<?=$this->basePath('js/respond.min.js'); ?>"></script>
     <![endif]-->
+
+    <script>
+        paceOptions = {
+            elements: true
+        };
+    </script>
+    <script src="<?=$this->basePath('js/pace.min.js'); ?>"></script>
 </head>
 <body>
-    <div class="wrap">
-        <header>
-            <nav class="main-menu">
-                <?=$this->navigation('navigation')->menu()->setPartial('partial/main-navigation.phtml'); /*?>
-                <ul>
-                    <li><a class="active-link-header" href="/">Главная</a></li>
-                    <li><a href="/catalog">Каталог</a></li>
-                    <li><a href="#">Новости</a></li>
-                    <li><a href="#">Контакты</a></li>
-                    <li><a href="#">Написать нам</a></li>
-                </ul>*/?>
-            </nav>
-            <div class="section">
-                <a class="logo" href="<?=$this->basePath('/'); ?>"></a>
-                <aside class="basket">
-                    <span class="name-basket-part">У вас в корзине: <strong>2</strong> детали</span>
-                    <span class="name-basket-part">На сумму <strong>8000</strong> руб.</span>
-                    <div>
-                        <button class="order-">Заказать</button>
-                        <a class="more">Подробнее</a>
+<div id="wrapper">
+    <div id="header" class="header">
+        <nav class="navbar navbar-site navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="row contacts">
+                    <div class="col-sm-3 col-sm-offset-6">
+                        <a class="pull-right" href="tel:+000000000">Телефон: (000) 000-0000</a>
                     </div>
-                    <div class="basket-box">
-                        <div style="display: inline-block; width: 100%;border-bottom: dotted 1px #ccc; position: relative;">
-                            <a class="basket-box-del"></a>
-                            <img class="preview" src="<?=$this->basePath('img/catalog/parts/show_image_in_imgtag.jpg'); ?>" alt="">
-                            <div class="basket-box-discirption">
-                                <h5 class="basket-box-title">Задняя фара BMW i3</h5>
-                                <form>
-                                    <input class="basket-box-minus" type="submit" value="-">
-                                    <input class="basket-box-count" type="text">
-                                    <input class="basket-box-plus" type="submit" value="+">
-                                    <div class="basket-box-total">
-                                        <span class="basket-box-total_count">4000</span>
-                                        <span class="rub">РУБ.</span></div>
-                                </form>
-                            </div>
-                        </div>
-                        <div style="display: inline-block; width: 100%;border-bottom: solid 1px #ccc;margin-bottom: 10px; position: relative;">
-                            <a class="basket-box-del"></a>
-                            <img class="preview" src="<?=$this->basePath('img/catalog/parts/show_image_in_imgtag.jpg'); ?>" alt="">
-                            <div class="basket-box-discirption">
-                                <h5 class="basket-box-title">Передняя фара BMW i3</h5>
-                                <form>
-                                    <input class="basket-box-minus" type="submit" value="-">
-                                    <input class="basket-box-count" type="text">
-                                    <input class="basket-box-plus" type="submit" value="+">
-                                    <div class="basket-box-total">
-                                        <span class="basket-box-total_count">4000</span>
-                                        <span class="rub">РУБ.</span></div>
-                                </form>
-                            </div>
-                        </div>
-                        <button class="order_">Заказать</button>
-                        <span style="font-size: 12px;   float: right;  text-decoration: underline;    margin-top: 6px;    margin-right: 20px;    display: inline-block;">Удалить все</span>
+                    <div class="col-sm-3">
+                        <a class="pull-right" href="mailto:ims.ltd.comp@gmail.com">Email: ims.ltd.comp@gmail.com</a>
                     </div>
-                </aside>
+                </div>
+                <div class="row">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="<?=$this->url('home');?>" class="navbar-brand">
+                            <i class="fa fa-fort-awesome"></i> <span>ООО</span> "ИМС"
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <?=$this->navigation('navigation')->menu()->setPartial('partial/main-navigation.phtml')->setUlClass('nav navbar-nav navbar-right'); ?>
+                    </div>
+                </div>
             </div>
-            <div class="search-block">
-                <?/*
-                <form class="search-form" method="get" action="#">
-                    <input type="text" class="search-field">
-                    <input type="submit" class="submit" value="Найти">
-                    <label class="description">Наберите текст, например: <u>Артикул детали</u> <i>или</i> <u>задняя фара BMW i3</u></label>
-                </form>
-                */?>
-            </div>
-        </header>
-        <!--Конец шапки сайта-->
-        <!--Основной контент-->
-        <nav class="sidebar-menu">
-            <?=$this->navigation('dbNavigation')->menu()->setPartial('partial/db-navigation.phtml'); ?>
         </nav>
-        <div class="wrap-content">
+    </div>
+
+    <? if ($homepage): ?>
+        <div id="intro" class="intro">
+            <div class="container">
+                <div id="slider1_container" class="slider-container">
+                    <div u="loading" class="slider-loading"><div></div><div></div></div>
+
+                    <!-- Slides Container -->
+                    <div u="slides" class="slides-content">
+                        <div>
+                            <img u="image" src="img/slider/home/01.jpg" />
+                            <div data-u="caption" data-t="0" class="slides-text-area">
+                                <div data-u="caption" data-t="1" class="slides-text slides-text-tl">Touch swipe and responsive javascript image slider</div>
+                                <div data-u="caption" data-t="2" class="slides-text slides-text-br">slideshow and responsive slider ...</div>
+                            </div>
+                        </div>
+                        <div>
+                            <img u="image" src="img/slider/home/02.jpg"/>
+                        </div>
+                        <div>
+                            <img u="image" src="img/slider/home/03.jpg"/>
+                        </div>
+                        <div>
+                            <img u="image" src="img/slider/home/04.jpg"/>
+                        </div>
+                    </div>
+
+                    <div u="navigator" class="jssorb05">
+                        <div u="prototype"></div>
+                    </div>
+
+                    <span u="arrowleft" class="jssora11l"></span>
+                    <span u="arrowright" class="jssora11r"></span>
+                </div>
+            </div>
+        </div>
+    <? endif; ?>
+
+    <div class="main-container">
+        <div class="container">
+            <? if (!$homepage): ?>
+                <div class="no-intro"></div>
+            <? endif; ?>
             <?=$this->content; ?>
         </div>
-        <footer>
-            <nav class="footer-menu">
-                <?=$this->navigation('navigation')->menu()->setPartial('partial/main-navigation.phtml'); /*?>
-                <ul>
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Каталог</a></li>
-                    <li><a href="#">Новости</a></li>
-                    <li><a href="#">Контакты</a></li>
-                    <li><a class="contact-form">Написать нам</a></li>
-                </ul>
-                */?>
-            </nav>
-        </footer>
     </div>
-    <?=$this->inlineScript() ?>
 
-    <?=$this->headScript()
-        ->prependFile($this->basePath('js/main.js'))
-        ->prependFile($this->basePath('js/jquery.min.js'))
-    ?>
+    <? if ($homepage): ?>
+        <div class="page-bottom-info">
+            <div class="page-bottom-info-inner">
+                <div class="page-bottom-info-content text-center">
+                    <h1>Если у вас есть какие-либо вопросы, пожалуйста, позвоните нам (000) 555-5555</h1>
+                    <a class="btn  btn-lg btn-primary-dark" href="tel:+000000000">
+                        <i class="icon-mobile"></i> <span class="hide-xs color50">Позвонить сейчас:</span> (000) 555-5555 </a>
+                </div>
+            </div>
+        </div>
+    <? endif; ?>
+    <div class="footer" id="footer">
+        <div class="container">
+            <?=$this->navigation('navigation')->menu()->setPartial('partial/main-navigation.phtml')->setUlClass('nav navbar-nav'); ?>
+            <ul class="nav navbar-nav navbar-right">
+                <li><div class="copyright">© 2015 ООО "ИМС"</div></li>
+            </ul>
+            <!--</nav>-->
+        </div>
+    </div>
+
+</div>
+<?=$this->inlineScript() ?>
+
+<?=$this->headScript()
+//        ->prependFile($this->basePath('js/machining.js'))
+    ->prependFile($this->basePath('js/script.js'))
+    ->prependFile($this->basePath('js/bootstrap.min.js'))
+    ->prependFile($this->basePath('js/jquery.min.js'))
+?>
 </body>
 </html>
