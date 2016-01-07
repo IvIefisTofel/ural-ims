@@ -12,7 +12,7 @@
 ---------------------
 
 * Папка public - основная директория сервера. Остальные на уровень выше.
-* .htaccess APLICATION_ENV меняется на production
+* Создать файл `.htaccess` из `development.htaccess` или из `production.htaccess`
 
 
 Обновление зависимостей
